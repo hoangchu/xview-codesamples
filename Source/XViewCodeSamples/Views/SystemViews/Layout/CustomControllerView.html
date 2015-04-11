@@ -1,0 +1,55 @@
+﻿<style type="text/css">
+    .typeName { color: #00a1de; }
+
+    .code { color: maroon; }
+
+    .error {
+        color: red;
+        font-size: 1.1em;
+    }
+
+    a {
+        text-decoration: none;
+        color: #00a1de;
+    }
+
+    a:hover { text-decoration: underline; }
+</style>
+<pre>
+__  ___   ___               ___         _           _ _         
+\ \/ \ \ / (_)_____ __ __  / __|___ _ _| |_ _ _ ___| | |___ _ _ 
+ >  < \ V /| / -_\ V  V / | (__/ _ | ' |  _| '_/ _ | | / -_| '_|
+/_/\_\ \_/ |_\___|\_/\_/   \___\___|_||_\__|_| \___|_|_\___|_|by Hoàng                                             
+<span class="error">{ErrorMessage}</span>
+Hi there {UserName},
+<!-- BEGIN: invalidTemplateName -->Your {TemplateTypeName} name <span class="error">{TemplateName}</span>
+does not comply with XView template naming convention.
+Template names must be matched by this regular expression:
+<span class="code">{TemplateNameRegexPattern}</span>
+You need to rename your template.
+-------------------------------------------------
+Template Naming Convention
+-------------------------------------------------
+1. Pascal Casing: capitalize the first letter of each word 
+   (including acronyms of over two letters in length)
+2. Words can be separated by a space character
+3. Optional "is-a" relationship character ":" is allowed.  
+   For example "System: Script", means System "is-a" Script
+4. Words on both the left and right sides of the ":" character
+   must comply with the first two rules
+5. Allowed characters are: A-Z, a-z, 0-9, :, space
+<!-- END: invalidTemplateName --><!-- BEGIN: viewNotFound -->
+Controller {ControllerTypeName} could not find a matching view for
+{TemplateTypeName} <strong>{TemplateName}</strong>.
+You need to implement this missing view class:
+<span class="error">{ViewFullTypeName}</span>
+<!-- END: viewNotFound -->
+-------------------------------------------------
+Documentation
+-------------------------------------------------
+<!-- BEGIN: projectDocumentation -->
+o <a href="{ProjectDocumentationUrl}">{ProjectNamespace} project</a>
+<!-- END: projectDocumentation -->
+o <a href="http://xview.codeplex.com">XView Website</a>
+o <a href="http://xview.codeplex.com/documentation">XView Documentation</a>
+</pre>

@@ -1,0 +1,1239 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>XView</name>
+    </assembly>
+    <members>
+        <member name="T:XView.DataContainer">
+            <summary>
+            Provides a standard way to store data in a container object.
+            </summary>
+        </member>
+        <member name="T:XView.IDataContainer">
+            <summary>
+            Provides an interface to store data in a container object.
+            </summary>
+        </member>
+        <member name="M:XView.IDataContainer.Get(System.String)">
+            <summary>
+            Gets a data item for the given key.
+            </summary>
+            <param name="key">Key name for the value to be retreived.</param>
+            <returns>Object represents the data item.</returns>
+        </member>
+        <member name="M:XView.IDataContainer.Set(System.String,System.Object)">
+            <summary>
+            Sets (add/update) a data object in the container with the given key.
+            </summary>
+            <param name="key">Key associated with the data object.</param>
+            <param name="data">Data object.</param>
+        </member>
+        <member name="M:XView.IDataContainer.Contains(System.String)">
+            <summary>
+            Checks whether the container contains a data item for the given key.
+            </summary>
+            <param name="key">Key name.</param>
+            <returns>true or false.</returns>
+        </member>
+        <member name="M:XView.IDataContainer.Remove(System.String)">
+            <summary>
+            Removes the data item from the container for the given key.
+            </summary>
+            <param name="key">Key name.</param>
+        </member>
+        <member name="M:XView.DataContainer.#ctor">
+            <summary>
+            Default ctor.
+            </summary>
+        </member>
+        <member name="M:XView.DataContainer.Get(System.String)">
+            <summary>
+            Gets a data item for the given key.
+            </summary>
+            <param name="key">Key name for the value to be retrieved.</param>
+            <returns>Data object or null.</returns>
+        </member>
+        <member name="M:XView.DataContainer.Set(System.String,System.Object)">
+            <summary>
+            Sets (adds or updates) a data object in the container with the given key.
+            </summary>
+            <param name="key">Key associated with the data object.</param>
+            <param name="data">Data object.</param>
+        </member>
+        <member name="M:XView.DataContainer.Contains(System.String)">
+            <summary>
+            Checks whether the container contains a data item for the given key.
+            </summary>
+            <param name="key">Key name.</param>
+            <returns>true or false.</returns>
+        </member>
+        <member name="M:XView.DataContainer.Remove(System.String)">
+            <summary>
+            Removes the data item from the container for the given key.
+            </summary>
+            <param name="key">Key name.</param>
+        </member>
+        <member name="T:XView.DefaultMemoryCache">
+            <summary>
+            Represents .NET's runtime <see cref="P:System.Runtime.Caching.MemoryCache.Default"/> cache.
+            </summary>
+        </member>
+        <member name="T:XView.ICache">
+            <summary>
+            Caching interface.
+            </summary>
+        </member>
+        <member name="M:XView.ICache.Set(System.String,System.Object,System.Runtime.Caching.CacheItemPolicy)">
+            <summary>
+            Sets (add/update) a data <see cref="T:System.Object"/> in cache with the given key and <see cref="T:System.Runtime.Caching.CacheItemPolicy"/>.
+            </summary>
+            <param name="key">Key associated with the data object.</param>
+            <param name="data"><see cref="T:System.Object"/>.</param>
+            <param name="cacheItemPolicy"><see cref="T:System.Runtime.Caching.CacheItemPolicy"/></param>
+        </member>
+        <member name="M:XView.DefaultMemoryCache.Get(System.String)">
+            <summary>
+            Gets an entry from the cache for the given key.
+            </summary>
+            <param name="key">Cache key.</param>
+            <returns>Cached object or null.</returns>
+        </member>
+        <member name="M:XView.DefaultMemoryCache.Set(System.String,System.Object)">
+            <summary>
+            Sets given object with given key to cache. Cache lifetime is set to 15 minutes.
+            </summary>
+            <param name="key">Cache key.</param>
+            <param name="obj">Object to cache.</param>
+        </member>
+        <member name="M:XView.DefaultMemoryCache.Contains(System.String)">
+            <summary>
+            Determines whether a cache entry exists in the cache for the given key.
+            </summary>
+            <param name="key">Cache key.</param>
+            <returns>true/false</returns>
+        </member>
+        <member name="M:XView.DefaultMemoryCache.Remove(System.String)">
+            <summary>
+            Removes a cache entry from cache.
+            </summary>
+            <param name="key">Cache key.</param>
+        </member>
+        <member name="M:XView.DefaultMemoryCache.Set(System.String,System.Object,System.Runtime.Caching.CacheItemPolicy)">
+            <summary>
+            Inserts a cache entry into the cache by using a key and a value and eviction. 
+            </summary>
+            <param name="key">Key associated with the data object.</param>
+            <param name="obj">Object to cache.</param>
+            <param name="policy"><see cref="T:System.Runtime.Caching.CacheItemPolicy"/>.</param>
+        </member>
+        <member name="M:XView.DefaultMemoryCache.MakeKeyUnique(System.String)">
+            <summary>
+            Gets a unique cache key for the given key. The returned cache key is unique to the 
+            currently executing assembly in the current <see cref="T:System.AppDomain"/>.
+            </summary>
+            <param name="key">Cache key to make unique.</param>
+            <returns>Unique cache key.</returns>
+        </member>
+        <member name="T:XView.View`2">
+            <summary>
+            Represents the base View with a strongly typed Model.
+            </summary>
+            <typeparam name="TContext"><see cref="!:TContext"/> type.</typeparam>
+            <typeparam name="TModel">Model type.</typeparam>
+        </member>
+        <member name="T:XView.ViewX`1">
+            <summary>
+            Represents the base View in XView's MVC implementation.
+            </summary>
+            <typeparam name="TContext"><see cref="!:TContext"/> type.</typeparam>
+        </member>
+        <member name="M:XView.ViewX`1.#ctor">
+            <summary>
+            Default ctor.
+            </summary>
+        </member>
+        <member name="M:XView.ViewX`1.#ctor(`0)">
+            <summary>
+            Ctor accepting a <see cref="!:TContext"/> as parameter.
+            </summary>
+            <param name="context"><see cref="!:TContext"/> object.</param>
+        </member>
+        <member name="M:XView.ViewX`1.#ctor(`0,XView.ViewX{`0})">
+            <summary>
+            Ctor accepting a <see cref="!:TContext"/> and a parent <see cref="T:XView.ViewX`1"/>.
+            </summary>
+            <param name="context"><see cref="!:TContext"/> object.</param>
+            <param name="parentView"><see cref="T:XView.ViewX`1"/> object.</param>
+        </member>
+        <member name="M:XView.ViewX`1.Render(System.Object)">
+            <summary>
+            Renders output for the given model.
+            </summary>
+            <param name="model">Object represents the model.</param>
+            <returns>Output string.</returns>
+        </member>
+        <member name="M:XView.ViewX`1.CreatePartial``1">
+            <summary>
+            Creates the given <see cref="T:XView.ViewX`1"/> having the same <typeparamref name="TContext"/> type
+            as that of the current <see cref="T:XView.ViewX`1"/>.
+            </summary>
+            <typeparam name="TView">
+            <see cref="T:XView.ViewX`1"/> having the same <typeparamref name="TContext"/> 
+            type as that of the current <see cref="T:XView.ViewX`1"/>.
+            </typeparam>
+            <returns>
+            <see cref="T:XView.ViewX`1"/> where <typeparamref name="TContext"/> is the same <typeparamref name="TContext"/> 
+            type as that of the current <see cref="T:XView.ViewX`1"/>.
+            </returns>
+        </member>
+        <member name="M:XView.ViewX`1.RenderPartial``1(System.Object)">
+            <summary>
+            Renders the given <see cref="T:XView.ViewX`1"/> with the given model object. The <typeparamref name="TContext"/> 
+            has the same <typeparamref name="TContext"/> type as that of the current <see cref="T:XView.ViewX`1"/>.
+            </summary>
+            <typeparam name="TView">
+            <see cref="T:XView.ViewX`1"/> having the same <typeparamref name="TContext"/> 
+            type as that of the current <see cref="T:XView.ViewX`1"/>.
+            </typeparam>
+            <param name="model">Object represents the model.</param>
+            <returns>Output string.</returns>
+        </member>
+        <member name="M:XView.ViewX`1.RegisterOutputFilter(XView.OutputValidationFilter)">
+            <summary>
+            Registers the given <see cref="T:XView.OutputValidationFilter"/>.
+            </summary>
+            <param name="filter"><see cref="T:XView.OutputValidationFilter"/> object.</param>
+        </member>
+        <member name="M:XView.ViewX`1.RegisterOutputFilter(XView.OutputDecorationFilter)">
+            <summary>
+            Registers the given <see cref="T:XView.OutputDecorationFilter"/>.
+            </summary>
+            <param name="filter"><see cref="T:XView.OutputDecorationFilter"/> object.</param>
+        </member>
+        <member name="M:XView.ViewX`1.Render">
+            <summary>
+            Renders output.
+            </summary>
+            <returns>Output string.</returns>
+        </member>
+        <member name="M:XView.ViewX`1.InitializeRender">
+            <summary>
+            Override this method to do custom initialization.
+            </summary>
+        </member>
+        <member name="M:XView.ViewX`1.HandleAndRenderInvalidOutputInPreviewMode(XView.InvalidOutputContext)">
+            <summary>
+            Handles and renders the <see cref="T:XView.InvalidOutputContext"/> caused an output validation failure in 
+            preview mode. Override this method to provide a userfriendly presentation of the invalid output and 
+            set exception to handled.
+            </summary>
+            <param name="invalidOutputContext"><see cref="T:XView.InvalidOutputContext"/> object.</param>
+            <returns>String presenting invalid view output.</returns>
+        </member>
+        <member name="M:XView.ViewX`1.Dispose(System.Boolean)">
+            <summary>
+            Disposes the <see cref="!:TContext"/>. Overriding this method to dispose extended <see cref="!:TContext"/> if needed.
+            </summary>
+            <param name="disposing">Boolean to specify whether or not to perform explicit disposal.</param>
+        </member>
+        <member name="P:XView.ViewX`1.Model">
+            <summary>
+            Gets the model.
+            </summary>
+        </member>
+        <member name="P:XView.ViewX`1.ViewScope">
+            <summary>
+            Gets an <see cref="T:XView.IDataContainer"/> containing data shared among related (parent/child) views.
+            </summary>
+        </member>
+        <member name="P:XView.ViewX`1.Parent">
+            <summary>
+            Gets the parent <see cref="T:XView.ViewX`1"/>.
+            </summary>
+        </member>
+        <member name="P:XView.ViewX`1.Context">
+            <summary>
+            Gets <see cref="!:TContext"/> object.
+            </summary>
+        </member>
+        <member name="P:XView.ViewX`1.OutputType">
+            <summary>
+            Gets <see cref="T:XView.ViewOutputType"/>.
+            </summary>
+        </member>
+        <member name="P:XView.ViewX`1.EnableOutputDecoration">
+            <summary>
+            Gets or sets a boolean to enable or disable output decoration.
+            </summary>
+        </member>
+        <member name="P:XView.ViewX`1.EnableOutputValidation">
+            <summary>
+            Gets or sets a boolean to enable or disable output validation.
+            </summary>
+        </member>
+        <member name="M:XView.View`2.#ctor">
+            <summary>
+            Default ctor.
+            </summary>
+        </member>
+        <member name="M:XView.View`2.#ctor(`0)">
+            <summary>
+            Ctor accepting a <see cref="!:TContext"/> object.
+            </summary>
+            <param name="context"><see cref="!:TContext"/> object.</param>
+        </member>
+        <member name="M:XView.View`2.#ctor(`0,XView.ViewX{`0})">
+            <summary>
+            Ctor accepting a <see cref="!:TContext"/> and a parent <see cref="T:XView.ViewX`1"/>.
+            </summary>
+            <param name="context"><see cref="!:TContext"/> object.</param>
+            <param name="parentView"><see cref="T:XView.ViewX`1"/> object.</param>
+        </member>
+        <member name="M:XView.View`2.Render(`1)">
+            <summary>
+            Renders the given strongly type <see cref="!:TModel"/>.
+            </summary>
+            <param name="model">Strongly type <see cref="!:TModel"/>.</param>
+            <returns>Output string.</returns>
+        </member>
+        <member name="P:XView.View`2.Model">
+            <summary>
+            Gets strongly typed model.
+            </summary>
+        </member>
+        <member name="T:XView.TridionExtensions">
+            <summary>
+            This class contains extension methods to TOM.NET API's types.
+            </summary>
+        </member>
+        <member name="M:XView.TridionExtensions.GetFields(Tridion.ContentManager.ContentManagement.Component)">
+            <summary>
+            Gets content <see cref="T:Tridion.ContentManager.ContentManagement.Fields.ItemFields"/> from a Component.
+            </summary>
+            <param name="component"><see cref="T:Tridion.ContentManager.ContentManagement.Component"/> object.</param>
+            <returns><see cref="T:Tridion.ContentManager.ContentManagement.Fields.ItemFields"/>.</returns>
+        </member>
+        <member name="M:XView.TridionExtensions.GetField``1(Tridion.ContentManager.ContentManagement.Component,System.String)">
+            <summary>
+            Gets an <see cref="T:Tridion.ContentManager.ContentManagement.Fields.ItemField"/> of a given type from a <see cref="T:Tridion.ContentManager.ContentManagement.Component"/>'s content <see cref="T:Tridion.ContentManager.ContentManagement.Fields.ItemFields"/> for the given field name.
+            </summary>
+            <typeparam name="T"><see cref="T:Tridion.ContentManager.ContentManagement.Fields.ItemField"/> type.</typeparam>
+            <param name="component"><see cref="T:Tridion.ContentManager.ContentManagement.Component"/> object.</param>
+            <param name="fieldName">Field name.</param>
+            <returns><see cref="T:Tridion.ContentManager.ContentManagement.Fields.ItemField"/> or null.</returns>
+        </member>
+        <member name="M:XView.TridionExtensions.GetText(Tridion.ContentManager.ContentManagement.Component,System.String)">
+            <summary>
+            Gets text value from the given field name. This method does
+            Tridion xhtml resolving if an <see cref="F:XView.TridionExtensions.XhtmlResolver"/> is available.
+            </summary>
+            <param name="component"><see cref="T:Tridion.ContentManager.ContentManagement.Component"/> object.</param>
+            <param name="fieldName">Field name.</param>
+            <returns>String or null.</returns>
+        </member>
+        <member name="M:XView.TridionExtensions.GetTexts(Tridion.ContentManager.ContentManagement.Component,System.String)">
+            <summary>
+            Gets <see cref="T:System.Collections.Generic.IList`1"/> value from the given field name.
+            </summary>
+            <param name="component"><see cref="T:Tridion.ContentManager.ContentManagement.Component"/> object.</param>
+            <param name="fieldName">Field name.</param>
+            <returns><see cref="T:System.Collections.Generic.IList`1"/> collection.</returns>
+        </member>
+        <member name="M:XView.TridionExtensions.GetComponent(Tridion.ContentManager.ContentManagement.Component,System.String)">
+            <summary>
+            Get <see cref="T:Tridion.ContentManager.ContentManagement.Component"/> value from the given field name.
+            </summary>
+            <param name="component"><see cref="T:Tridion.ContentManager.ContentManagement.Component"/> object.</param>
+            <param name="fieldName">Field name.</param>
+            <returns><see cref="T:Tridion.ContentManager.ContentManagement.Component"/> or null.</returns>
+        </member>
+        <member name="M:XView.TridionExtensions.GetComponents(Tridion.ContentManager.ContentManagement.Component,System.String)">
+            <summary>
+            Gets <see cref="T:System.Collections.Generic.IList`1"/> value from the given field name.
+            </summary>
+            <param name="component"><see cref="T:Tridion.ContentManager.ContentManagement.Component"/> object.</param>
+            <param name="fieldName">Field name.</param>
+            <returns><see cref="T:System.Collections.Generic.IList`1"/> collection.</returns>
+        </member>
+        <member name="M:XView.TridionExtensions.GetKeyword(Tridion.ContentManager.ContentManagement.Component,System.String)">
+            <summary>
+            Gets <see cref="T:Tridion.ContentManager.ContentManagement.Keyword"/> value from the given field name.
+            </summary>
+            <param name="component"><see cref="T:Tridion.ContentManager.ContentManagement.Component"/> object.</param>
+            <param name="fieldName">Field name.</param>
+            <returns><see cref="T:Tridion.ContentManager.ContentManagement.Keyword"/> or null.</returns>
+        </member>
+        <member name="M:XView.TridionExtensions.GetKeywords(Tridion.ContentManager.ContentManagement.Component,System.String)">
+            <summary>
+            Gets <see cref="T:System.Collections.Generic.IList`1"/> from the given field name.
+            </summary>
+            <param name="component"><see cref="T:Tridion.ContentManager.ContentManagement.Component"/> object.</param>
+            <param name="fieldName">Field name.</param>
+            <returns><see cref="T:System.Collections.Generic.IList`1"/> collection.</returns>
+        </member>
+        <member name="M:XView.TridionExtensions.GetDate(Tridion.ContentManager.ContentManagement.Component,System.String)">
+            <summary>
+            Gets <see cref="T:System.DateTime"/> value from the given field name.
+            </summary>
+            <param name="component"><see cref="T:Tridion.ContentManager.ContentManagement.Component"/> object.</param>
+            <param name="fieldName">Field name.</param>
+            <returns><see cref="T:System.DateTime"/> or <see cref="F:System.DateTime.MinValue"/>.</returns>
+        </member>
+        <member name="M:XView.TridionExtensions.GetDates(Tridion.ContentManager.ContentManagement.Component,System.String)">
+            <summary>
+            Gets <see cref="T:System.Collections.Generic.IList`1"/> value from the given field name.
+            </summary>
+            <param name="component"><see cref="T:Tridion.ContentManager.ContentManagement.Component"/> object.</param>
+            <param name="fieldName">Field name.</param>
+            <returns><see cref="T:System.Collections.Generic.IList`1"/> collection.</returns>
+        </member>
+        <member name="M:XView.TridionExtensions.GetNumber(Tridion.ContentManager.ContentManagement.Component,System.String)">
+            <summary>
+            Gets <see cref="T:System.Double"/> value from the given field name.
+            </summary>
+            <param name="component"><see cref="T:Tridion.ContentManager.ContentManagement.Component"/> object.</param>
+            <param name="fieldName">Field name.</param>
+            <returns><see cref="T:System.Double"/> or <see cref="F:System.Double.MinValue"/>.</returns>
+        </member>
+        <member name="M:XView.TridionExtensions.GetNumbers(Tridion.ContentManager.ContentManagement.Component,System.String)">
+            <summary>
+            Gets <see cref="T:System.Collections.Generic.IList`1"/> value from the given field name.
+            </summary>
+            <param name="component"><see cref="T:Tridion.ContentManager.ContentManagement.Component"/> object.</param>
+            <param name="fieldName">Field name.</param>
+            <returns><see cref="T:System.Collections.Generic.IList`1"/> collection.</returns>
+        </member>
+        <member name="M:XView.TridionExtensions.GetEmbeddedField(Tridion.ContentManager.ContentManagement.Component,System.String)">
+            <summary>
+            Gets <see cref="T:Tridion.ContentManager.ContentManagement.Fields.ItemFields"/> value from the given field name.
+            </summary>
+            <param name="component"><see cref="T:Tridion.ContentManager.ContentManagement.Component"/> object.</param>
+            <param name="fieldName">Field name.</param>
+            <returns><see cref="T:Tridion.ContentManager.ContentManagement.Fields.ItemFields"/> or null.</returns>
+        </member>
+        <member name="M:XView.TridionExtensions.GetEmbeddedFields(Tridion.ContentManager.ContentManagement.Component,System.String)">
+            <summary>
+            Gets <see cref="T:System.Collections.Generic.IList`1"/> value from the given field name.
+            </summary>
+            <param name="component"><see cref="T:Tridion.ContentManager.ContentManagement.Component"/> object.</param>
+            <param name="fieldName">Field name.</param>
+            <returns><see cref="T:System.Collections.Generic.IList`1"/> collection.</returns>
+        </member>
+        <member name="F:XView.TridionExtensions.XhtmlResolver">
+            <summary>
+            Assign a handler to resolve xhtml from <see cref="T:Tridion.ContentManager.ContentManagement.Fields.XhtmlField"/>. The assigned handler will
+            be utilized by the extension method ItemFields.GetText() when the target
+            <see cref="T:Tridion.ContentManager.ContentManagement.Fields.ItemFields"/> is an <see cref="T:Tridion.ContentManager.ContentManagement.Fields.XhtmlField"/>. The TOM.NET built-in static method
+            <see cref="M:Tridion.ContentManager.Templating.TemplateUtilities.ResolveRichTextFieldXhtml(System.String)"/> is a perfect handler to assign to
+            this delegate. IMPORTANT NOTE: Do not assign an instance handler! This can lead 
+            to undesired behaviour and memory leak. Assign a static handler instead.
+            </summary>
+        </member>
+        <member name="M:XView.TridionExtensions.GetText(Tridion.ContentManager.ContentManagement.Fields.ItemFields,System.String)">
+            <summary>
+            Gets text value from the given field name.
+            This method does Tridion xhtml resolving if a <see cref="F:XView.TridionExtensions.XhtmlResolver"/> handler is provided.
+            </summary>
+            <param name="fields"><see cref="T:Tridion.ContentManager.ContentManagement.Fields.ItemFields"/> object.</param>
+            <param name="fieldName">Field name.</param>
+            <returns><see cref="T:System.String"/> or null.</returns>
+        </member>
+        <member name="M:XView.TridionExtensions.GetTexts(Tridion.ContentManager.ContentManagement.Fields.ItemFields,System.String)">
+            <summary>
+            Gets <see cref="T:System.Collections.Generic.IList`1"/> value from the given the field name.
+            This method does Tridion xhtml resolving if a <see cref="F:XView.TridionExtensions.XhtmlResolver"/> handler is provided.
+            </summary>
+            <param name="fields"><see cref="T:Tridion.ContentManager.ContentManagement.Fields.ItemFields"/> object.</param>
+            <param name="fieldName">Field name.</param>
+            <returns><see cref="T:System.Collections.Generic.IList`1"/> collection.</returns>
+        </member>
+        <member name="M:XView.TridionExtensions.GetComponent(Tridion.ContentManager.ContentManagement.Fields.ItemFields,System.String)">
+            <summary>
+            Gets <see cref="T:Tridion.ContentManager.ContentManagement.Component"/> value from the given field name.
+            </summary>
+            <param name="fields"><see cref="T:Tridion.ContentManager.ContentManagement.Fields.ItemFields"/> object.</param>
+            <param name="fieldName">Field name.</param>
+            <returns><see cref="T:Tridion.ContentManager.ContentManagement.Component"/> or null.</returns>
+        </member>
+        <member name="M:XView.TridionExtensions.GetComponents(Tridion.ContentManager.ContentManagement.Fields.ItemFields,System.String)">
+            <summary>
+            Gets <see cref="T:System.Collections.Generic.IList`1"/> value from the given field name.
+            </summary>
+            <param name="fields"><see cref="T:Tridion.ContentManager.ContentManagement.Fields.ItemFields"/> object.</param>
+            <param name="fieldName">Field name.</param>
+            <returns><see cref="T:System.Collections.Generic.IList`1"/> collection.</returns>
+        </member>
+        <member name="M:XView.TridionExtensions.GetKeyword(Tridion.ContentManager.ContentManagement.Fields.ItemFields,System.String)">
+            <summary>
+            Gets <see cref="T:Tridion.ContentManager.ContentManagement.Keyword"/> value from the given field name.
+            </summary>
+            <param name="fields"><see cref="T:Tridion.ContentManager.ContentManagement.Fields.ItemFields"/> object.</param>
+            <param name="fieldName">Field name.</param>
+            <returns><see cref="T:Tridion.ContentManager.ContentManagement.Keyword"/> or null.</returns>
+        </member>
+        <member name="M:XView.TridionExtensions.GetKeywords(Tridion.ContentManager.ContentManagement.Fields.ItemFields,System.String)">
+            <summary>
+            Gets <see cref="T:System.Collections.Generic.IList`1"/> value from the given field name.
+            </summary>
+            <param name="fields"><see cref="T:Tridion.ContentManager.ContentManagement.Fields.ItemFields"/> object.</param>
+            <param name="fieldName">Field name.</param>
+            <returns><see cref="T:System.Collections.Generic.IList`1"/> collection.</returns>
+        </member>
+        <member name="M:XView.TridionExtensions.GetDate(Tridion.ContentManager.ContentManagement.Fields.ItemFields,System.String)">
+            <summary>
+            Gets <see cref="T:System.DateTime"/> value from the given fieldd name.
+            </summary>
+            <param name="fields"><see cref="T:Tridion.ContentManager.ContentManagement.Fields.ItemFields"/> object.</param>
+            <param name="fieldName">Field name.</param>
+            <returns><see cref="T:System.DateTime"/> or <see cref="F:System.DateTime.MinValue"/>.</returns>
+        </member>
+        <member name="M:XView.TridionExtensions.GetDates(Tridion.ContentManager.ContentManagement.Fields.ItemFields,System.String)">
+            <summary>
+            Gets <see cref="T:System.Collections.Generic.IList`1"/> value from the given field name.
+            </summary>
+            <param name="fields"><see cref="T:Tridion.ContentManager.ContentManagement.Fields.ItemFields"/> object.</param>
+            <param name="fieldName">Field name.</param>
+            <returns><see cref="T:System.Collections.Generic.IList`1"/> collection.</returns>
+        </member>
+        <member name="M:XView.TridionExtensions.GetNumber(Tridion.ContentManager.ContentManagement.Fields.ItemFields,System.String)">
+            <summary>
+            Gets <see cref="T:System.Double"/> value from the given field name.
+            </summary>
+            <param name="fields"><see cref="T:Tridion.ContentManager.ContentManagement.Fields.ItemFields"/> object.</param>
+            <param name="fieldName">Field name.</param>
+            <returns><see cref="T:System.Double"/> or <see cref="F:System.Double.MinValue"/>.</returns>
+        </member>
+        <member name="M:XView.TridionExtensions.GetNumbers(Tridion.ContentManager.ContentManagement.Fields.ItemFields,System.String)">
+            <summary>
+            Gets <see cref="T:System.Collections.Generic.IList`1"/> value from the given field name.
+            </summary>
+            <param name="fields"><see cref="T:Tridion.ContentManager.ContentManagement.Fields.ItemFields"/> object.</param>
+            <param name="fieldName">Field name.</param>
+            <returns><see cref="T:System.Collections.Generic.IList`1"/> collection.</returns>
+        </member>
+        <member name="M:XView.TridionExtensions.GetEmbeddedField(Tridion.ContentManager.ContentManagement.Fields.ItemFields,System.String)">
+            <summary>
+            Gets <see cref="T:Tridion.ContentManager.ContentManagement.Fields.ItemFields"/> value from the given field name.
+            </summary>
+            <param name="fields"><see cref="T:Tridion.ContentManager.ContentManagement.Fields.ItemFields"/> object.</param>
+            <param name="fieldName">Field name.</param>
+            <returns><see cref="T:Tridion.ContentManager.ContentManagement.Fields.ItemFields"/> or null.</returns>
+        </member>
+        <member name="M:XView.TridionExtensions.GetEmbeddedFields(Tridion.ContentManager.ContentManagement.Fields.ItemFields,System.String)">
+            <summary>
+            Gets <see cref="T:System.Collections.Generic.IList`1"/> value from the given field name.
+            </summary>
+            <param name="fields"><see cref="T:Tridion.ContentManager.ContentManagement.Fields.ItemFields"/> object.</param>
+            <param name="fieldName">Field name.</param>
+            <returns><see cref="T:System.Collections.Generic.IList`1"/> collection.</returns>
+        </member>
+        <member name="M:XView.TridionExtensions.GetField``1(Tridion.ContentManager.ContentManagement.Fields.ItemFields,System.String)">
+            <summary>
+            Gets an <see cref="T:Tridion.ContentManager.ContentManagement.Fields.ItemField"/> of a given type from given field name.
+            </summary>
+            <typeparam name="T"><see cref="T:Tridion.ContentManager.ContentManagement.Fields.ItemField"/> type.</typeparam>
+            <param name="fields"><see cref="T:Tridion.ContentManager.ContentManagement.Fields.ItemFields"/> object.</param>
+            <param name="fieldPath">Field name or path to field name.</param>
+            <returns><see cref="T:Tridion.ContentManager.ContentManagement.Fields.ItemField"/> object of the given type.</returns>
+        </member>
+        <member name="M:XView.TridionExtensions.GetMetadataFields(Tridion.ContentManager.ContentManagement.Repository)">
+            <summary>
+            Gets metadata <see cref="T:Tridion.ContentManager.ContentManagement.Fields.ItemFields"/> object from a <see cref="T:Tridion.ContentManager.ContentManagement.Repository"/> derived object.
+            </summary>
+            <param name="repository"><see cref="T:Tridion.ContentManager.ContentManagement.Repository"/> derived object.</param>
+            <returns><see cref="T:Tridion.ContentManager.ContentManagement.Fields.ItemFields"/> object.</returns>
+        </member>
+        <member name="M:XView.TridionExtensions.GetMetadataField``1(Tridion.ContentManager.ContentManagement.Repository,System.String)">
+            <summary>
+            Gets an <see cref="T:Tridion.ContentManager.ContentManagement.Fields.ItemField"/> from a <see cref="T:Tridion.ContentManager.ContentManagement.Repository"/>'s metadata <see cref="T:Tridion.ContentManager.ContentManagement.Fields.ItemFields"/> from the given field name.
+            </summary>
+            <typeparam name="T">Type of <see cref="T:Tridion.ContentManager.ContentManagement.Fields.ItemField"/>.</typeparam>
+            <param name="repository">Repository derived object.</param>
+            <param name="fieldName">Field name.</param>
+            <returns><see cref="T:Tridion.ContentManager.ContentManagement.Fields.ItemField"/> object of the given type.</returns>
+        </member>
+        <member name="M:XView.TridionExtensions.GetMetadataFields(Tridion.ContentManager.ContentManagement.RepositoryLocalObject)">
+            <summary>
+            Gets metadata <see cref="T:Tridion.ContentManager.ContentManagement.Fields.ItemFields"/> object from a <see cref="T:Tridion.ContentManager.ContentManagement.RepositoryLocalObject"/> derived object.
+            </summary>
+            <param name="repoLocalObject"><see cref="T:Tridion.ContentManager.ContentManagement.RepositoryLocalObject"/> object.</param>
+            <returns><see cref="T:Tridion.ContentManager.ContentManagement.Fields.ItemFields"/> object.</returns>
+        </member>
+        <member name="M:XView.TridionExtensions.GetMetadataField``1(Tridion.ContentManager.ContentManagement.RepositoryLocalObject,System.String)">
+            <summary>
+            Gets an <see cref="T:Tridion.ContentManager.ContentManagement.Fields.ItemField"/> from a <see cref="T:Tridion.ContentManager.ContentManagement.RepositoryLocalObject"/>'s metadata <see cref="T:Tridion.ContentManager.ContentManagement.Fields.ItemFields"/> from the given field name.
+            </summary>
+            <typeparam name="T"><see cref="T:Tridion.ContentManager.ContentManagement.Fields.ItemField"/> type.</typeparam>
+            <param name="repoLocalObject"><see cref="T:Tridion.ContentManager.ContentManagement.RepositoryLocalObject"/> object.</param>
+            <param name="fieldName">Field name.</param>
+            <returns><see cref="T:Tridion.ContentManager.ContentManagement.Fields.ItemField"/> object of the given type.</returns>
+        </member>
+        <member name="M:XView.TridionExtensions.HasValue(Tridion.ContentManager.ContentManagement.Fields.TextField)">
+            <summary>
+            <see cref="T:Tridion.ContentManager.ContentManagement.Fields.TextField"/> has value?
+            </summary>
+            <param name="field"><see cref="T:Tridion.ContentManager.ContentManagement.Fields.TextField"/>.</param>
+            <returns>true/false.</returns>
+        </member>
+        <member name="M:XView.TridionExtensions.HasValue(Tridion.ContentManager.ContentManagement.Fields.ComponentLinkField)">
+            <summary>
+            <see cref="T:Tridion.ContentManager.ContentManagement.Fields.ComponentLinkField"/> has value?
+            </summary>
+            <param name="field"><see cref="T:Tridion.ContentManager.ContentManagement.Fields.ComponentLinkField"/>.</param>
+            <returns>true/false.</returns>
+        </member>
+        <member name="M:XView.TridionExtensions.HasValue(Tridion.ContentManager.ContentManagement.Fields.EmbeddedSchemaField)">
+            <summary>
+            <see cref="T:Tridion.ContentManager.ContentManagement.Fields.EmbeddedSchemaField"/> has value?
+            </summary>
+            <param name="field"><see cref="T:Tridion.ContentManager.ContentManagement.Fields.EmbeddedSchemaField"/>.</param>
+            <returns>true/false.</returns>
+        </member>
+        <member name="M:XView.TridionExtensions.HasValue(Tridion.ContentManager.ContentManagement.Fields.KeywordField)">
+            <summary>
+            <see cref="T:Tridion.ContentManager.ContentManagement.Fields.KeywordField"/> has value?
+            </summary>
+            <param name="field"><see cref="T:Tridion.ContentManager.ContentManagement.Fields.KeywordField"/>.</param>
+            <returns>true/false.</returns>
+        </member>
+        <member name="M:XView.TridionExtensions.HasValue(Tridion.ContentManager.ContentManagement.Fields.DateField)">
+            <summary>
+            <see cref="T:Tridion.ContentManager.ContentManagement.Fields.DateField"/> has value?
+            </summary>
+            <param name="field"><see cref="T:Tridion.ContentManager.ContentManagement.Fields.DateField"/>.</param>
+            <returns>true/false.</returns>
+        </member>
+        <member name="M:XView.TridionExtensions.HasValue(Tridion.ContentManager.ContentManagement.Fields.NumberField)">
+            <summary>
+            <see cref="T:Tridion.ContentManager.ContentManagement.Fields.NumberField"/> has value?
+            </summary>
+            <param name="field"><see cref="T:Tridion.ContentManager.ContentManagement.Fields.NumberField"/>.</param>
+            <returns>true/false.</returns>
+        </member>
+        <member name="T:XView.InvalidOutputContext">
+            <summary>
+            Represents the invalid view output context.
+            </summary>
+        </member>
+        <member name="M:XView.InvalidOutputContext.#ctor(System.String,XView.ViewOutputType,System.Exception,System.Boolean)">
+            <summary>
+            Ctor.
+            </summary>
+            <param name="viewOutput">View output string.</param>
+            <param name="outputType"><see cref="T:XView.ViewOutputType"/>.</param>
+            <param name="invalidOutputException"><see cref="P:XView.InvalidOutputContext.Exception"/> or null.</param>
+            <param name="exceptionHandled">Is validation <see cref="P:XView.InvalidOutputContext.Exception"/> handled?</param>
+        </member>
+        <member name="P:XView.InvalidOutputContext.ViewOutput">
+            <summary>
+            Gets the output of the rendered view.
+            </summary>
+        </member>
+        <member name="P:XView.InvalidOutputContext.OutputType">
+            <summary>
+            Gets the <see cref="T:XView.ViewOutputType"/> of the rendered view.
+            </summary>
+        </member>
+        <member name="P:XView.InvalidOutputContext.Exception">
+            <summary>
+            Gets the <see cref="P:XView.InvalidOutputContext.Exception"/> thrown during the rendering of the view. If no exception, 
+            this properties returns null.
+            </summary>
+        </member>
+        <member name="P:XView.InvalidOutputContext.ExceptionHandled">
+            <summary>
+            Gets or sets a boolean stating whether a possible <see cref="P:XView.InvalidOutputContext.Exception"/> thrown during 
+            the rendering of the view is handle.
+            </summary>
+        </member>
+        <member name="T:XView.ControllerView`1">
+            <summary>
+            Default <see cref="T:XView.ControllerView`1"/>. This view will be shown when in preview mode  
+            a ComponentTemplate or PageTemplate name is invalid, or when no view can be found for the 
+            given ComponentTemplate or PageTemplate.
+            </summary>
+            <typeparam name="TContext">Type of <see cref="T:XView.TridionContext"/> or a derived type.</typeparam>
+        </member>
+        <member name="M:XView.ControllerView`1.#ctor">
+            <summary>
+            Default ctor.
+            </summary>
+        </member>
+        <member name="M:XView.ControllerView`1.#ctor(`0)">
+            <summary>
+            Ctor accepting a <see cref="T:XView.TridionContext"/> or derived type as parameter.
+            </summary>
+            <param name="context"><see cref="T:XView.TridionContext"/> or derived type.</param>
+        </member>
+        <member name="M:XView.ControllerView`1.#ctor(`0,XView.ViewX{`0})">
+            <summary>
+            Ctor accepting a <see cref="T:XView.TridionContext"/> or derived type and a parent <see cref="T:XView.ViewX`1"/>.
+            </summary>
+            <param name="context"><see cref="T:XView.TridionContext"/> or derived type.</param>
+            <param name="parentView">Parent <see cref="T:XView.ViewX`1"/>.</param>
+        </member>
+        <member name="M:XView.ControllerView`1.Render">
+            <summary>
+            Renders output.
+            </summary>
+            <returns>String output.</returns>
+        </member>
+        <member name="T:XView.IViewMapper">
+            <summary>
+            Interface of ViewMapper.
+            </summary>
+        </member>
+        <member name="M:XView.IViewMapper.MapView(Tridion.ContentManager.CommunicationManagement.Template)">
+            <summary>
+            Maps view for the given Tridion <see cref="T:Tridion.ContentManager.CommunicationManagement.Template"/>.
+            </summary>
+            <param name="tridionTemplate">Tridion <see cref="T:Tridion.ContentManager.CommunicationManagement.Template"/> object.</param>
+            <returns>Instance of this <see cref="T:XView.IViewMapper"/>.</returns>
+        </member>
+        <member name="P:XView.IViewMapper.ViewFullTypeName">
+            <summary>
+            Gets fully qualified view type name.
+            </summary>
+        </member>
+        <member name="P:XView.IViewMapper.ProjectRootNamespace">
+            <summary>
+            Gets the root namespace of the templating project containing the view to map.
+            </summary>
+        </member>
+        <member name="P:XView.IViewMapper.TemplateNameRegexPattern">
+            <summary>
+            Gets regex pattern to match a Tridion <see cref="T:Tridion.ContentManager.CommunicationManagement.Template"/> name.
+            </summary>
+        </member>
+        <member name="P:XView.IViewMapper.TridionTemplate">
+            <summary>
+            Gets the Tridion <see cref="T:Tridion.ContentManager.CommunicationManagement.Template"/> that is subjected to view mapping.
+            </summary>
+        </member>
+        <member name="P:XView.IViewMapper.Success">
+            <summary>
+            Gets a boolean representing whether or not the view mapping succeeded.
+            </summary>
+        </member>
+        <member name="T:XView.ViewOutputType">
+            <summary>
+            <see cref="T:XView.ViewOutputType"/> allows fine-grained control over view output decoration and validation.
+            </summary>
+        </member>
+        <member name="F:XView.ViewOutputType.Ascx">
+            <summary>
+            ASP.NET User Controler.
+            </summary>
+        </member>
+        <member name="F:XView.ViewOutputType.Aspx">
+            <summary>
+            ASP.NET Active Server Page Extended.
+            </summary>
+        </member>
+        <member name="F:XView.ViewOutputType.Cshtml">
+            <summary>
+            ASP.NET Razor.
+            </summary>
+        </member>
+        <member name="F:XView.ViewOutputType.Css">
+            <summary>
+            Cascading Style Sheet.
+            </summary>
+        </member>
+        <member name="F:XView.ViewOutputType.Custom">
+            <summary>
+            Custom Output Type.
+            </summary>
+        </member>
+        <member name="F:XView.ViewOutputType.Html">
+            <summary>
+            Hypertext Markup Language.
+            </summary>
+        </member>
+        <member name="F:XView.ViewOutputType.Js">
+            <summary>
+            JavaScript.
+            </summary>
+        </member>
+        <member name="F:XView.ViewOutputType.Json">
+            <summary>
+            JavaScript Object Notation.
+            </summary>
+        </member>
+        <member name="F:XView.ViewOutputType.Jsp">
+            <summary>
+            Java Server Page.
+            </summary>
+        </member>
+        <member name="F:XView.ViewOutputType.Text">
+            <summary>
+            Plain Text.
+            </summary>
+        </member>
+        <member name="F:XView.ViewOutputType.Vm">
+            <summary>
+            Velocity Markup.
+            </summary>
+        </member>
+        <member name="F:XView.ViewOutputType.Xhtml">
+            <summary>
+            Extensible Hypertext Markup Language.
+            </summary>
+        </member>
+        <member name="F:XView.ViewOutputType.Xml">
+            <summary>
+            Extensible Markup Language.
+            </summary>
+        </member>
+        <member name="F:XView.ViewOutputType.Xslt">
+            <summary>
+            Extensible Stylesheet Language Transformations.
+            </summary>
+        </member>
+        <member name="T:XView.TridionContext">
+            <summary>
+            Represents the rendering context of a ComponentTemplate or PageTemplate. This class defines 
+            the basic attributes and behaviours that are applicable to all Tridion implementations. 
+            Extend this class to add implementation specific properties and methods.
+            </summary>
+        </member>
+        <member name="M:XView.TridionContext.#ctor">
+            <summary>
+            Default ctor.
+            </summary>
+        </member>
+        <member name="M:XView.TridionContext.#ctor(Tridion.ContentManager.Templating.Engine,Tridion.ContentManager.Templating.Package)">
+            <summary>
+            TridionContext constructor accepting an <see cref="P:XView.TridionContext.Engine"/> and a <see cref="P:XView.TridionContext.Package"/>.
+            </summary>
+            <param name="engine"><see cref="P:XView.TridionContext.Engine"/> object.</param>
+            <param name="package"><see cref="P:XView.TridionContext.Package"/> object.</param>
+        </member>
+        <member name="M:XView.TridionContext.InitializeContext(Tridion.ContentManager.Templating.Engine,Tridion.ContentManager.Templating.Package)">
+            <summary>
+            Initialize <see cref="T:XView.TridionContext"/> with the given <see cref="P:XView.TridionContext.Engine"/> and <see cref="P:XView.TridionContext.Package"/> objects.
+            </summary>
+            <param name="engine"><see cref="P:XView.TridionContext.Engine"/> object.</param>
+            <param name="package"><see cref="P:XView.TridionContext.Package"/> object.</param>
+        </member>
+        <member name="M:XView.TridionContext.RenderITemplate``1(System.String)">
+            <summary>
+            Renders an <see cref="T:Tridion.ContentManager.Templating.Assembly.ITemplate"/> template for the given html string.
+            </summary>
+            <typeparam name="T"><see cref="T:Tridion.ContentManager.Templating.Assembly.ITemplate"/> type.</typeparam>
+            <param name="html">Html string.</param>
+            <returns>Rendered html string.</returns>
+        </member>
+        <member name="M:XView.TridionContext.RenderITemplate``1(System.String,System.String)">
+            <summary>
+            Renders an <see cref="T:Tridion.ContentManager.Templating.Assembly.ITemplate"/> template for the given html string with the given <see cref="P:XView.TridionContext.Package"/> variable name.
+            </summary>
+            <typeparam name="T"><see cref="T:Tridion.ContentManager.Templating.Assembly.ITemplate"/> type.</typeparam>
+            <param name="html">Html string.</param>
+            <param name="variableName"><see cref="P:XView.TridionContext.Package"/> variable name.</param>
+            <returns>Rendered html string.</returns>
+        </member>
+        <member name="M:XView.TridionContext.TransformITemplate``1(System.Collections.Generic.IDictionary{System.String,System.String})">
+            <summary>
+            Executes <see cref="T:Tridion.ContentManager.Templating.Assembly.ITemplate"/>.Transform() method for the given <see cref="T:Tridion.ContentManager.Templating.Assembly.ITemplate"/> with the given parameters.
+            </summary>
+            <typeparam name="T"><see cref="T:Tridion.ContentManager.Templating.Assembly.ITemplate"/> type.</typeparam>
+            <param name="parameters"><see cref="T:System.Collections.Generic.IDictionary`2"/> representing <see cref="T:Tridion.ContentManager.Templating.Assembly.ITemplate"/>'s parameters.</param>
+        </member>
+        <member name="M:XView.TridionContext.RenderExtractBinariesFromHtml(System.String)">
+            <summary>
+            Renders the Tridion built-in <see cref="T:Tridion.ContentManager.Templating.Templates.ExtractBinariesFromHtmlTemplate"/> to extract images from
+            Html output and registers each extracted image with the context <see cref="P:XView.TridionContext.Template"/>.
+            </summary>
+            <param name="html">Html string containing image references.</param>
+            <returns>Html string.</returns>
+        </member>
+        <member name="M:XView.TridionContext.PushOutputToPackage(System.String,Tridion.ContentManager.Templating.ContentType)">
+            <summary>
+            Pushes the given string with the given <see cref="T:Tridion.ContentManager.Templating.ContentType"/> to the <see cref="P:XView.TridionContext.Package"/> as an "Output" <see cref="T:Tridion.ContentManager.Templating.Item"/>.
+            Only the following string typed <see cref="T:Tridion.ContentManager.Templating.ContentType"/>s are allowed: Html, Xhtml, Xml and Text.
+            </summary>
+            <param name="text">String to push to package.</param>
+            <param name="contentType">ContentType.</param>
+        </member>
+        <member name="M:XView.TridionContext.PushOutputToPackage(System.String,XView.ViewOutputType)">
+            <summary>
+            Pushes the given string with given <see cref="T:XView.ViewOutputType"/> to the <see cref="P:XView.TridionContext.Package"/> as an "Output" <see cref="T:Tridion.ContentManager.Templating.Item"/>.
+            </summary>
+            <param name="text">String to be pushed to <see cref="P:XView.TridionContext.Package"/>.</param>
+            <param name="outputType"><see cref="T:XView.ViewOutputType"/>.</param>
+        </member>
+        <member name="M:XView.TridionContext.PushStringToPackage(System.String,System.String,Tridion.ContentManager.Templating.ContentType)">
+            <summary>
+            Pushes item to <see cref="P:XView.TridionContext.Package"/> with the given variable name, string and <see cref="T:Tridion.ContentManager.Templating.ContentType"/>. The following
+            string typed <see cref="T:Tridion.ContentManager.Templating.ContentType"/>s are allowed: Html, Xhtml, Xml and Text.
+            </summary>
+            <param name="variableName"><see cref="P:XView.TridionContext.Package"/> variable name.</param>
+            <param name="text">String to push to <see cref="P:XView.TridionContext.Package"/>.</param>
+            <param name="contentType"><see cref="T:Tridion.ContentManager.Templating.ContentType"/>.</param>
+        </member>
+        <member name="M:XView.TridionContext.Dispose(System.Boolean)">
+            <summary>
+            Disposes the <see cref="T:XView.TridionContext"/>. Overriding this method to dispose extended <see cref="T:XView.TridionContext"/> if needed.
+            </summary>
+            <param name="disposing">Boolean to specify whether or not to perform explicit disposal.</param>
+        </member>
+        <member name="M:XView.TridionContext.GetCustomPageScope">
+            <summary>
+            Gets custom <see cref="P:XView.TridionContext.PageScope"/>. Override this method to provide a custom <see cref="P:XView.TridionContext.PageScope"/>.
+            </summary>
+            <returns><see cref="T:XView.IDataContainer"/> representing the <see cref="P:XView.TridionContext.PageScope"/>.</returns>
+        </member>
+        <member name="M:XView.TridionContext.GetCustomContextScope">
+            <summary>
+            Gets custom <see cref="P:XView.TridionContext.ContextScope"/>. Override this method to provide a custom <see cref="P:XView.TridionContext.ContextScope"/>.
+            </summary>
+            <returns><see cref="T:XView.IDataContainer"/> representing the <see cref="P:XView.TridionContext.ContextScope"/>.</returns>
+        </member>
+        <member name="M:XView.TridionContext.GetContentTypeByOutputType(XView.ViewOutputType)">
+            <summary>
+            Gets a matching <see cref="T:Tridion.ContentManager.Templating.ContentType"/> for the given <see cref="T:XView.ViewOutputType"/>.
+            </summary>
+            <param name="outputType"><see cref="T:XView.ViewOutputType"/>.</param>
+            <returns><see cref="T:Tridion.ContentManager.Templating.ContentType"/>.</returns>
+        </member>
+        <member name="M:XView.TridionContext.RenderITemplate``1(System.String,System.String,Tridion.ContentManager.Templating.ContentType)">
+            <summary>
+            Renders an <see cref="T:Tridion.ContentManager.Templating.Assembly.ITemplate"/> template for the given text string with the given <see cref="P:XView.TridionContext.Package"/> variable name and <see cref="T:Tridion.ContentManager.Templating.ContentType"/>.
+            </summary>
+            <typeparam name="T"><see cref="T:Tridion.ContentManager.Templating.Assembly.ITemplate"/> type.</typeparam>
+            <param name="text">Text string.</param>
+            <param name="variableName"><see cref="P:XView.TridionContext.Package"/> variable name.</param>
+            <param name="contentType"><see cref="T:Tridion.ContentManager.Templating.ContentType"/>.</param>
+            <returns>Rendered text string.</returns>
+        </member>
+        <member name="P:XView.TridionContext.ContextScope">
+            <summary>
+            Gets an <see cref="T:XView.IDataContainer"/> containing data that persists throughout a publishing context.
+            </summary>
+        </member>
+        <member name="P:XView.TridionContext.PageScope">
+            <summary>
+            Gets the <see cref="T:XView.IDataContainer"/> containing data shared between static templates on the same page.
+            </summary>
+        </member>
+        <member name="P:XView.TridionContext.Engine">
+            <summary>
+            Gets <see cref="P:XView.TridionContext.Engine"/> object.
+            </summary>
+        </member>
+        <member name="P:XView.TridionContext.Component">
+            <summary>
+            Gets the context <see cref="P:XView.TridionContext.Component"/>.
+            </summary>
+        </member>
+        <member name="P:XView.TridionContext.Page">
+            <summary>
+            Gets the context <see cref="P:XView.TridionContext.Page"/>.
+            </summary>
+        </member>
+        <member name="P:XView.TridionContext.Publication">
+            <summary>
+            Gets the context Publication.
+            </summary>
+        </member>
+        <member name="P:XView.TridionContext.Template">
+            <summary>
+            Gets the context <see cref="P:XView.TridionContext.Template"/>.
+            </summary>
+        </member>
+        <member name="P:XView.TridionContext.IsPublishing">
+            <summary>
+            Is the current <see cref="T:Tridion.ContentManager.Publishing.RenderMode"/> equals <see cref="F:Tridion.ContentManager.Publishing.RenderMode.Publish"/>?
+            </summary>
+        </member>
+        <member name="P:XView.TridionContext.Cache">
+            <summary>
+            Gets a <see cref="T:XView.DefaultMemoryCache"/> object representing .NET Runtime <see cref="P:System.Runtime.Caching.MemoryCache.Default"/> cache object.
+            IMPORTANT NOTE: This is not distributed cache. In scenarios of multiple publishers cache is 
+            not shared among the different publishers.
+            </summary>
+        </member>
+        <member name="P:XView.TridionContext.Package">
+            <summary>
+            Gets the <see cref="P:XView.TridionContext.Package"/> object.
+            </summary>
+        </member>
+        <member name="T:XView.Controller`1">
+            <summary>
+            Represents the base Front Controller.
+            </summary>
+        </member>
+        <member name="M:XView.Controller`1.Transform(Tridion.ContentManager.Templating.Engine,Tridion.ContentManager.Templating.Package)">
+            <summary>
+            The single point of contact with Tridion.
+            </summary>
+            <param name="engine"><see cref="T:Tridion.ContentManager.Templating.Engine"/> object.</param>
+            <param name="package"><see cref="T:Tridion.ContentManager.Templating.Package"/> object.</param>
+        </member>
+        <member name="M:XView.Controller`1.GetCustomControllerView">
+            <summary>
+            Gets a custom <see cref="T:XView.ControllerView`1"/>. Override this method to provide a custom 
+            <see cref="T:XView.ControllerView`1"/> view.
+            </summary>
+            <returns><see cref="T:XView.ControllerView`1"/> object.</returns>
+        </member>
+        <member name="M:XView.Controller`1.GetCustomViewMapper">
+            <summary>
+            Gets a custom <see cref="T:XView.IViewMapper"/>. Override this method to provide a custom <see cref="T:XView.IViewMapper"/>.
+            </summary>
+            <returns><see cref="T:XView.IViewMapper"/> object or null.</returns>
+        </member>
+        <member name="M:XView.Controller`1.GetCustomViewModel">
+            <summary>
+            Gets a custom view model. Override this method to provide a custom model for a specific view.
+            </summary>
+            <returns>Object or null.</returns>
+        </member>
+        <member name="M:XView.Controller`1.InitializeViewRequest">
+            <summary>
+            Performs custom initialization logic. Override this method to provide custom initialization logic.
+            </summary>
+        </member>
+        <member name="M:XView.Controller`1.RegisterOutputFilter(XView.OutputDecorationFilter)">
+            <summary>
+            Adds an <see cref="T:XView.OutputDecorationFilter"/> to do view output decoration.
+            </summary>
+            <param name="filter"><see cref="T:XView.OutputDecorationFilter"/> object.</param>
+        </member>
+        <member name="M:XView.Controller`1.RegisterOutputFilter(XView.OutputValidationFilter)">
+            <summary>
+            Adds an <see cref="T:XView.OutputValidationFilter"/> to do view output validation.
+            </summary>
+            <param name="filter"><see cref="T:XView.OutputValidationFilter"/> object.</param>
+        </member>
+        <member name="M:XView.Controller`1.GetRootNamespace">
+            <summary>
+            Gets the root namespace of the current templating project/assembly.
+            </summary>
+            <returns>String represents the root namespace.</returns>
+        </member>
+        <member name="M:XView.Controller`1.GetInternalType(System.String)">
+            <summary>
+            Gets <see cref="T:System.Type"/> in the current assembly for the given type full name.
+            Override this method if you don't merge (ILMerge) XView.dll with your project dll.
+            </summary>
+            <param name="typeFullName"><see cref="T:System.Type"/> full name.</param>
+            <returns>Type.</returns>
+        </member>
+        <member name="M:XView.Controller`1.Dispose(System.Boolean)">
+            <summary>
+            Disposes the <see cref="T:XView.Controller`1"/>. Overriding this method to dispose 
+            extended <see cref="T:XView.TridionContext"/> if needed.
+            </summary>
+            <param name="disposing">Boolean to specify whether or not to perform explicit disposal.</param>
+        </member>
+        <member name="P:XView.Controller`1.Context">
+            <summary>
+            Gets the <see cref="!:TContext"/>.
+            </summary>
+        </member>
+        <member name="P:XView.Controller`1.ViewType">
+            <summary>
+            Gets the <see cref="T:System.Type"/> of the mapped <see cref="T:XView.ViewX`1"/>.
+            </summary>
+        </member>
+        <member name="P:XView.Controller`1.ViewMapper">
+            <summary>
+            Gets the <see cref="T:XView.IViewMapper"/>.
+            </summary>
+        </member>
+        <member name="P:XView.Controller`1.ProjectDocumentationUrl">
+            <summary>
+            Gets or (protected) sets the documentation URL of the current XView templating project.
+            </summary>
+        </member>
+        <member name="T:XView.ViewMapper">
+            <summary>
+            Represents the default implementation of IViewMapper.
+            </summary>
+        </member>
+        <member name="M:XView.ViewMapper.#ctor">
+            <summary>
+            Default ctor.
+            </summary>
+        </member>
+        <member name="M:XView.ViewMapper.#ctor(System.String)">
+            <summary>
+            ViewMapper constructor with the given root namespace as parameter.
+            </summary>
+            <param name="rootNamespace">Root namespace of the current TOM.NET templating project.</param>
+        </member>
+        <member name="M:XView.ViewMapper.MapView(Tridion.ContentManager.CommunicationManagement.Template)">
+            <summary>
+            Maps a view for the given Tridion template.
+            </summary>
+            <param name="tridionTemplate">Tridion template.</param>
+            <returns>This IViewMapper.</returns>
+        </member>
+        <member name="M:XView.ViewMapper.GetViewNamespace">
+            <summary>
+            Gets the namespace containing the view to map. Override this method to provide
+            different view namespaces.
+            </summary>
+        </member>
+        <member name="P:XView.ViewMapper.TemplateNamePrefix">
+            <summary>
+            Gets the template name prefix of the rendering Tridion template.
+            </summary>
+        </member>
+        <member name="P:XView.ViewMapper.ViewTypeName">
+            <summary>
+            Gets the type name of the mapped view.
+            </summary>
+        </member>
+        <member name="P:XView.ViewMapper.ViewFullTypeName">
+            <summary>
+            Gets the fully qualified type name of the mapped view.
+            </summary>
+        </member>
+        <member name="P:XView.ViewMapper.TridionTemplate">
+            <summary>
+            Gets the rendering Tridion template.
+            </summary>
+        </member>
+        <member name="P:XView.ViewMapper.TemplateNameRegexPattern">
+            <summary>
+            Gets the regular expression used to validate template name.
+            </summary>
+        </member>
+        <member name="P:XView.ViewMapper.ProjectRootNamespace">
+            <summary>
+            Gets the root namespace of the templating project containing the view to map.
+            </summary>
+        </member>
+        <member name="P:XView.ViewMapper.Success">
+            <summary>
+            View mapping succeeded?
+            </summary>
+        </member>
+        <member name="T:XView.OutputDecorationFilter">
+            <summary>
+            Representing the base class for view output decoration.
+            </summary>
+        </member>
+        <member name="M:XView.OutputDecorationFilter.CanHandle(XView.ViewOutputType)">
+            <summary>
+            Can handle the given <see cref="T:XView.ViewOutputType"/>?
+            </summary>
+            <param name="viewOutputType"><see cref="T:XView.ViewOutputType"/>.</param>
+            <returns>true/false.</returns>
+        </member>
+        <member name="M:XView.OutputDecorationFilter.Decorate(System.String)">
+            <summary>
+            Decorates the given text.
+            </summary>
+            <param name="text">Text string.</param>
+            <returns>Decorated text string.</returns>
+        </member>
+        <member name="T:XView.OutputValidationFilter">
+            <summary>
+            Representing the base class for view output validation.
+            </summary>
+        </member>
+        <member name="M:XView.OutputValidationFilter.CanHandle(XView.ViewOutputType)">
+            <summary>
+            Can handle the given <see cref="T:XView.ViewOutputType"/>?
+            </summary>
+            <param name="viewOutputType"><see cref="T:XView.ViewOutputType"/>.</param>
+            <returns>true/false.</returns>
+        </member>
+        <member name="M:XView.OutputValidationFilter.Validate(System.String)">
+            <summary>
+            Validates the given text string.
+            </summary>
+            <param name="text">Text to validate.</param>
+        </member>
+        <member name="T:XView.XTemplate">
+            <summary>
+            Templating engine for parsing HTML and text.
+            </summary>
+        </member>
+        <member name="F:XView.XTemplate.ValueFilter">
+            <summary>
+            Value filter. When assigned the <see cref="F:XView.XTemplate.ValueFilter"/> will be invoked to filter each assigned variable value.
+            </summary>
+        </member>
+        <member name="M:XView.XTemplate.#ctor(System.Reflection.Assembly,System.String)">
+            <summary>
+            Instantiates a new <see cref="T:XView.XTemplate"/> object with the given template's full resource name in the given <see cref="T:System.Reflection.Assembly"/>.
+            </summary>
+            <param name="assembly"><see cref="T:System.Reflection.Assembly"/> containing embedded resource.</param>
+            <param name="fullyQualifiedResourceName">Fully qualified name of the embedded resource.</param>
+        </member>
+        <member name="M:XView.XTemplate.#ctor(System.String)">
+            <summary>
+            Instantiates a new <see cref="T:XView.XTemplate"/> object with the given template.
+            </summary>
+            <param name="template">Template string.</param>
+        </member>
+        <member name="M:XView.XTemplate.Assign(System.Collections.Generic.IEnumerable{System.Collections.Generic.KeyValuePair{System.String,System.String}})">
+            <summary>
+            Assigns a list of variables from the given <see><cref>IEnumerable{KeyValuePair{string, string}}</cref></see>object.
+            </summary>
+            <param name="values"><see><cref>IEnumerable{KeyValuePair{string, string}}</cref></see>object.</param>
+        </member>
+        <member name="M:XView.XTemplate.Assign(System.String,System.String)">
+            <summary>
+            Assigns a value to a variable.
+            </summary>
+            <param name="variableName">Variable name.</param>
+            <param name="value">Variable value.</param>
+        </member>
+        <member name="M:XView.XTemplate.Parse(System.String)">
+            <summary>
+            Parses a block.
+            </summary>
+            <param name="blockName">Fully qualified block name.</param>
+        </member>
+        <member name="M:XView.XTemplate.AssignParse(System.String,System.String,System.String)">
+            <summary>
+            Assigns the given variable and value, and parses the given block.
+            </summary>
+            <param name="variableName">Variable name.</param>
+            <param name="variableValue">Value.</param>
+            <param name="blockName">Block name to parse.</param>
+        </member>
+        <member name="M:XView.XTemplate.ResetParsedBlock(System.String)">
+            <summary>
+            Resets a parsed block.
+            </summary>
+            <param name="blockName">Name of a parsed block.</param>
+        </member>
+        <member name="M:XView.XTemplate.ToString">
+            <summary>
+            Parses and outputs root block.
+            </summary>
+            <returns>String output.</returns>
+        </member>
+        <member name="M:XView.XTemplate.ToString(System.String)">
+            <summary>
+            Parses and outputs the given block.
+            </summary>
+            <param name="blockName">Fully qualified block name.</param>
+            <returns>Parsed string of the given block.</returns>
+        </member>
+        <member name="M:XView.XTemplate.AddRootBlock(System.String)">
+            <summary>
+            Adds root block (the most outter block) to template, if root block is omitted.
+            </summary>
+        </member>
+        <member name="P:XView.XTemplate.AutoResetParsedBlocks">
+            <summary>
+            Gets or sets a boolean to specify whether or not to autoreset a parsed block.
+            </summary>
+        </member>
+        <member name="P:XView.XTemplate.ReserveUnassignedVariableTags">
+            <summary>
+            Gets or sets a boolean to specify whether or not to reserve unassigned variables.
+            When set to true, then unassigned variable tags will be shown in the output. By default
+            unassigned variable tags gets removed.
+            </summary>
+        </member>
+    </members>
+</doc>
