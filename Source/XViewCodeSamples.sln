@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
 VisualStudioVersion = 12.0.31101.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "XViewCodeSamples", "XViewCodeSamples", "{D6D3819E-CAB8-4569-9D1A-0D2757FB1DD9}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Templating", "Templating", "{D6D3819E-CAB8-4569-9D1A-0D2757FB1DD9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "XViewCodeSamples", "XViewCodeSamples\XViewCodeSamples.csproj", "{B38DD907-4FC6-4EEE-989F-2625B6A2FFBE}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Chimote.Tridion.Templating.Intranet", "Templating\Chimote.Tridion.Templating.Intranet.csproj", "{B38DD907-4FC6-4EEE-989F-2625B6A2FFBE}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

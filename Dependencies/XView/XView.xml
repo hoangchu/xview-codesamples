@@ -4,75 +4,6 @@
         <name>XView</name>
     </assembly>
     <members>
-        <member name="T:XView.DataContainer">
-            <summary>
-            Provides a standard way to store data in a container object.
-            </summary>
-        </member>
-        <member name="T:XView.IDataContainer">
-            <summary>
-            Provides an interface to store data in a container object.
-            </summary>
-        </member>
-        <member name="M:XView.IDataContainer.Get(System.String)">
-            <summary>
-            Gets a data item for the given key.
-            </summary>
-            <param name="key">Key name for the value to be retreived.</param>
-            <returns>Object represents the data item.</returns>
-        </member>
-        <member name="M:XView.IDataContainer.Set(System.String,System.Object)">
-            <summary>
-            Sets (add/update) a data object in the container with the given key.
-            </summary>
-            <param name="key">Key associated with the data object.</param>
-            <param name="data">Data object.</param>
-        </member>
-        <member name="M:XView.IDataContainer.Contains(System.String)">
-            <summary>
-            Checks whether the container contains a data item for the given key.
-            </summary>
-            <param name="key">Key name.</param>
-            <returns>true or false.</returns>
-        </member>
-        <member name="M:XView.IDataContainer.Remove(System.String)">
-            <summary>
-            Removes the data item from the container for the given key.
-            </summary>
-            <param name="key">Key name.</param>
-        </member>
-        <member name="M:XView.DataContainer.#ctor">
-            <summary>
-            Default ctor.
-            </summary>
-        </member>
-        <member name="M:XView.DataContainer.Get(System.String)">
-            <summary>
-            Gets a data item for the given key.
-            </summary>
-            <param name="key">Key name for the value to be retrieved.</param>
-            <returns>Data object or null.</returns>
-        </member>
-        <member name="M:XView.DataContainer.Set(System.String,System.Object)">
-            <summary>
-            Sets (adds or updates) a data object in the container with the given key.
-            </summary>
-            <param name="key">Key associated with the data object.</param>
-            <param name="data">Data object.</param>
-        </member>
-        <member name="M:XView.DataContainer.Contains(System.String)">
-            <summary>
-            Checks whether the container contains a data item for the given key.
-            </summary>
-            <param name="key">Key name.</param>
-            <returns>true or false.</returns>
-        </member>
-        <member name="M:XView.DataContainer.Remove(System.String)">
-            <summary>
-            Removes the data item from the container for the given key.
-            </summary>
-            <param name="key">Key name.</param>
-        </member>
         <member name="T:XView.DefaultMemoryCache">
             <summary>
             Represents .NET's runtime <see cref="P:System.Runtime.Caching.MemoryCache.Default"/> cache.
@@ -83,13 +14,40 @@
             Caching interface.
             </summary>
         </member>
+        <member name="M:XView.ICache.Get(System.String)">
+            <summary>
+            Gets the cache object associated with the given key.
+            </summary>
+            <param name="key">Cache key.</param>
+            <returns>Cache object.</returns>
+        </member>
+        <member name="M:XView.ICache.Set(System.String,System.Object)">
+            <summary>
+            Sets (add/update) a cache entry.
+            </summary>
+            <param name="key">Cache key.</param>
+            <param name="value">Cache object.</param>
+        </member>
         <member name="M:XView.ICache.Set(System.String,System.Object,System.Runtime.Caching.CacheItemPolicy)">
             <summary>
-            Sets (add/update) a data <see cref="T:System.Object"/> in cache with the given key and <see cref="T:System.Runtime.Caching.CacheItemPolicy"/>.
+            Sets (add/update) a cache entry with a given <see cref="T:System.Runtime.Caching.CacheItemPolicy"/>.
             </summary>
-            <param name="key">Key associated with the data object.</param>
-            <param name="data"><see cref="T:System.Object"/>.</param>
+            <param name="key">Cache key.</param>
+            <param name="value"><see cref="T:System.Object"/>.</param>
             <param name="cacheItemPolicy"><see cref="T:System.Runtime.Caching.CacheItemPolicy"/></param>
+        </member>
+        <member name="M:XView.ICache.Contains(System.String)">
+            <summary>
+            Checks whether a cache entry exists for the given key.
+            </summary>
+            <param name="key">Cache key.</param>
+            <returns>true or false.</returns>
+        </member>
+        <member name="M:XView.ICache.Remove(System.String)">
+            <summary>
+            Removes the cache entry.
+            </summary>
+            <param name="key">Cache key.</param>
         </member>
         <member name="M:XView.DefaultMemoryCache.Get(System.String)">
             <summary>
@@ -167,7 +125,7 @@
         </member>
         <member name="M:XView.ViewX`1.Render(System.Object)">
             <summary>
-            Renders output for the given model.
+            Renders the given model.
             </summary>
             <param name="model">Object represents the model.</param>
             <returns>Output string.</returns>
@@ -221,6 +179,17 @@
             Override this method to do custom initialization.
             </summary>
         </member>
+        <member name="M:XView.ViewX`1.PreRender">
+            <summary>
+            Override this method to do custom pre-render actions.
+            </summary>
+        </member>
+        <member name="M:XView.ViewX`1.PostRender(System.String)">
+            <summary>
+            Override this method to do custom post-render actions.
+            </summary>
+            <param name="viewOutput">Decorated and validated view output.</param>
+        </member>
         <member name="M:XView.ViewX`1.HandleAndRenderInvalidOutputInPreviewMode(XView.InvalidOutputContext)">
             <summary>
             Handles and renders the <see cref="T:XView.InvalidOutputContext"/> caused an output validation failure in 
@@ -243,7 +212,7 @@
         </member>
         <member name="P:XView.ViewX`1.ViewScope">
             <summary>
-            Gets an <see cref="T:XView.IDataContainer"/> containing data shared among related (parent/child) views.
+            Gets an <see cref="T:System.Collections.Generic.IDictionary`2"/> containing data shared among related (parent/child) views.
             </summary>
         </member>
         <member name="P:XView.ViewX`1.Parent">
@@ -882,13 +851,13 @@
             <summary>
             Gets custom <see cref="P:XView.TridionContext.PageScope"/>. Override this method to provide a custom <see cref="P:XView.TridionContext.PageScope"/>.
             </summary>
-            <returns><see cref="T:XView.IDataContainer"/> representing the <see cref="P:XView.TridionContext.PageScope"/>.</returns>
+            <returns><see cref="T:System.Collections.Generic.IDictionary`2"/> representing the <see cref="P:XView.TridionContext.PageScope"/>.</returns>
         </member>
         <member name="M:XView.TridionContext.GetCustomContextScope">
             <summary>
             Gets custom <see cref="P:XView.TridionContext.ContextScope"/>. Override this method to provide a custom <see cref="P:XView.TridionContext.ContextScope"/>.
             </summary>
-            <returns><see cref="T:XView.IDataContainer"/> representing the <see cref="P:XView.TridionContext.ContextScope"/>.</returns>
+            <returns><see cref="T:System.Collections.Generic.IDictionary`2"/> representing the <see cref="P:XView.TridionContext.ContextScope"/>.</returns>
         </member>
         <member name="M:XView.TridionContext.GetContentTypeByOutputType(XView.ViewOutputType)">
             <summary>
@@ -909,12 +878,12 @@
         </member>
         <member name="P:XView.TridionContext.ContextScope">
             <summary>
-            Gets an <see cref="T:XView.IDataContainer"/> containing data that persists throughout a publishing context.
+            Gets the <see cref="T:System.Collections.Generic.IDictionary`2"/> containing data that persists throughout a publishing context.
             </summary>
         </member>
         <member name="P:XView.TridionContext.PageScope">
             <summary>
-            Gets the <see cref="T:XView.IDataContainer"/> containing data shared between static templates on the same page.
+            Gets the <see cref="T:System.Collections.Generic.IDictionary`2"/> containing data shared between static templates on the same page.
             </summary>
         </member>
         <member name="P:XView.TridionContext.Engine">

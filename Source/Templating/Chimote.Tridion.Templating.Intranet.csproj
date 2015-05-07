@@ -1,0 +1,170 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{B38DD907-4FC6-4EEE-989F-2625B6A2FFBE}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Chimote.Tridion.Templating.Intranet</RootNamespace>
+    <AssemblyName>Chimote.Tridion.Templating.Intranet</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Tridion.Common">
+      <HintPath>..\..\Dependencies\Tridion2013SP1\Tridion.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Tridion.ContentManager">
+      <HintPath>..\..\Dependencies\Tridion2013SP1\Tridion.ContentManager.dll</HintPath>
+    </Reference>
+    <Reference Include="Tridion.ContentManager.Common">
+      <HintPath>..\..\Dependencies\Tridion2013SP1\Tridion.ContentManager.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Tridion.ContentManager.Publishing">
+      <HintPath>..\..\Dependencies\Tridion2013SP1\Tridion.ContentManager.Publishing.dll</HintPath>
+    </Reference>
+    <Reference Include="Tridion.ContentManager.Templating">
+      <HintPath>..\..\Dependencies\Tridion2013SP1\Tridion.ContentManager.Templating.dll</HintPath>
+    </Reference>
+    <Reference Include="Tridion.Logging">
+      <HintPath>..\..\Dependencies\Tridion2013SP1\Tridion.Logging.dll</HintPath>
+    </Reference>
+    <Reference Include="XView">
+      <HintPath>..\..\Dependencies\XView\XView.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Common\DebugGuard.cs" />
+    <Compile Include="Common\Guard.cs" />
+    <Compile Include="Common\GuardException.cs" />
+    <Compile Include="Common\TomExtensions.cs" />
+    <Compile Include="Common\TridionLogger.cs" />
+    <Compile Include="Controllers\IntranetContext.cs" />
+    <Compile Include="Common\XmlUtilities.cs" />
+    <Compile Include="Configurations\PublicationConfiguration.cs" />
+    <Compile Include="Controllers\IntranetController.cs" />
+    <Compile Include="Controllers\IntranetViewMapper.cs" />
+    <Compile Include="DecorationFilters\CountryAndLanguageCodesDecorationFilter.cs" />
+    <Compile Include="DecorationFilters\DefaultFinishActionsDecorationFilter.cs" />
+    <Compile Include="Common\Navigation.cs" />
+    <Compile Include="ValidationFilters\HtmlValidationFilter.cs" />
+    <Compile Include="ValidationFilters\XmlValidationFilter.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Views\CodeSampleViews\Layout.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Layout.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\PageViews\CssView.cs" />
+    <Compile Include="Views\PageViews\HtmlView.cs" />
+    <Compile Include="Views\PageViews\JsView.cs" />
+    <Compile Include="Views\PageViews\Layout.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Layout.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ComponentViews\Layout.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Layout.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\PageViews\XmlView.cs" />
+    <Compile Include="Views\SharedViews\Layout.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Layout.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\CodeSampleViews\ExtensionMethodsComponentView.cs" />
+    <Compile Include="Views\CodeSampleViews\ExtensionMethodsItemFieldsView.cs" />
+    <Compile Include="Views\CodeSampleViews\ExtensionMethodsItemFieldView.cs" />
+    <Compile Include="Views\CodeSampleViews\ExtensionMethodsRepositoryLocalObjectView.cs" />
+    <Compile Include="Views\CodeSampleViews\ExtensionMethodsRepositoryView.cs" />
+    <Compile Include="Views\CodeSampleViews\PageScopeView.cs" />
+    <Compile Include="Views\ComponentView.cs" />
+    <Compile Include="Views\ComponentViews\ArticleView.cs" />
+    <Compile Include="Views\ComponentViews\SampleXmlView.cs" />
+    <Compile Include="Views\DynamicComponent.cs" />
+    <Compile Include="Views\DynamicPageView.cs" />
+    <Compile Include="Views\PageView.cs" />
+    <Compile Include="Views\PageViews\RenderView.cs" />
+    <Compile Include="Views\SharedViews\PromoboxView.cs" />
+    <Compile Include="Views\SystemViews\IntranetControllerView.cs" />
+    <Compile Include="Views\SystemViews\PreviewErrorView.cs" />
+    <Compile Include="Views\SystemViews\Layout.Designer.cs">
+      <DependentUpon>Layout.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Views\View.cs" />
+    <Compile Include="Views\CodeSampleViews\XTemplateExample1View.cs" />
+    <Compile Include="Views\CodeSampleViews\XTemplateExample2View.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Views\MobileViews\" />
+    <Folder Include="Views\PageViews\Layout\" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Views\ComponentViews\Layout.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Layout.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\PageViews\Layout.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Layout.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\SharedViews\Layout.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Layout.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\SystemViews\Layout.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Layout.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\CodeSampleViews\Layout.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Layout.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\ComponentViews\Layout\ArticleView.html" />
+    <Content Include="Views\SharedViews\Layout\PromoboxView.html" />
+    <Content Include="Views\SystemViews\Layout\IntranetControllerView.html" />
+    <Content Include="Views\SystemViews\Layout\PreviewErrorView.html" />
+    <Content Include="Views\CodeSampleViews\Layout\XTemplateExample1View.html" />
+    <Content Include="Views\CodeSampleViews\Layout\XTemplateExample2View.html" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
