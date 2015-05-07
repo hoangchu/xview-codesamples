@@ -1,5 +1,6 @@
 ﻿using Chimote.Tridion.Templating.Intranet.Common;
 
+using Tridion.ContentManager.CommunicationManagement;
 using Tridion.ContentManager.ContentManagement;
 
 namespace Chimote.Tridion.Templating.Intranet.Views
@@ -12,7 +13,8 @@ namespace Chimote.Tridion.Templating.Intranet.Views
         /// Context.Engine.RenderComponentPresentation(TcmUri componentUri, TcmUri componentTemplateUri).
         /// </summary>
         /// <param name="component">Component.</param>
-        public virtual void SetPageScopeData(Component component)
+        /// <param name="template">ComponentTemplate.</param>
+        public virtual void SetPageScopeData(Component component, ComponentTemplate template)
         {
             DebugGuard.Requires(this.Context.IsPageContext);
         }

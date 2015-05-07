@@ -59,7 +59,7 @@ namespace Chimote.Tridion.Templating.Intranet.Views
             {
                 if (view != null)
                 {
-                    view.SetPageScopeData(component);
+                    view.SetPageScopeData(component, template);
                 }
             }
 
