@@ -30,7 +30,7 @@ namespace Chimote.Tridion.Templating.Intranet.Views.SystemViews
 
         private string RenderHtmlPreviewError()
         {
-            dynamic xt = this.NewXTemplate(Layout.PreviewErrorView);
+            var xt = this.NewXTemplate(Layout.PreviewErrorView);
             xt.ViewOutput = this.Model.ViewOutput;
             xt.PreviewErrorMessage = this.Model.Exception.Message;
 

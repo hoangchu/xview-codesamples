@@ -7,8 +7,6 @@ namespace Chimote.Tridion.Templating.Intranet.Views
 {
     /// <summary>
     /// Represents the base View to render Component model.
-    /// This base View is optional, but useful in large implementations.
-    /// 
     /// In this View define Component related properties and methods to be re-used
     /// in derived Views.
     /// </summary>
@@ -25,6 +23,13 @@ namespace Chimote.Tridion.Templating.Intranet.Views
         protected ItemFields Metadata
         {
             get { return this.metadata ?? (this.metadata = this.Model.GetMetadataFields()); }
+        }
+
+        protected override void InitializeRender()
+        {
+            base.InitializeRender();
+            this.fields = null;
+            this.metadata = null;
         }
     }
 }

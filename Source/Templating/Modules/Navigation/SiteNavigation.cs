@@ -1,6 +1,8 @@
 ﻿using System.Collections.Generic;
 using System.Xml;
 
+using Chimote.Tridion.Templating.Intranet.Common;
+
 using Tridion.ContentManager;
 using Tridion.ContentManager.CommunicationManagement;
 using Tridion.ContentManager.ContentManagement;
@@ -11,19 +13,19 @@ using XView;
 
 using ICache = XView.ICache;
 
-namespace Chimote.Tridion.Templating.Intranet.Common
+namespace Chimote.Tridion.Templating.Intranet.Modules.Navigation
 {
-    public class Navigation
+    public class SiteNavigation
     {
         private readonly Engine engine;
         private ICache cache;
 
-        public Navigation(Engine engine)
+        public SiteNavigation(Engine engine)
         {
             this.engine = engine;
         }
 
-        public Navigation(Engine engine, ICache cache)
+        public SiteNavigation(Engine engine, ICache cache)
         {
             this.engine = engine;
             this.Cache = cache;

@@ -9,9 +9,9 @@ namespace Chimote.Tridion.Templating.Intranet.Common
     {
         private readonly TemplatingLogger logger;
 
-        public TridionLogger(TemplatingLogger logger)
+        public TridionLogger(Type typeToLog)
         {
-            this.logger = logger;
+            this.logger = TemplatingLogger.GetLogger(typeToLog);
         }
 
         public void Error(string message)

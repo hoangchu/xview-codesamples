@@ -32,6 +32,7 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -60,10 +61,15 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Common\ComponentImage.cs" />
     <Compile Include="Common\DebugGuard.cs" />
     <Compile Include="Common\Guard.cs" />
     <Compile Include="Common\GuardException.cs" />
-    <Compile Include="Common\TomExtensions.cs" />
+    <Compile Include="Common\ImagePathResolver.cs" />
+    <Compile Include="Common\IntranetPageData.cs" />
+    <Compile Include="Common\MultimediaItem.cs" />
+    <Compile Include="Common\TomExtensions.Engine.cs" />
+    <Compile Include="Common\TomExtensions.RepositoryLocalObject.cs" />
     <Compile Include="Common\TridionLogger.cs" />
     <Compile Include="Controllers\IntranetContext.cs" />
     <Compile Include="Common\XmlUtilities.cs" />
@@ -72,7 +78,7 @@
     <Compile Include="Controllers\IntranetViewMapper.cs" />
     <Compile Include="DecorationFilters\CountryAndLanguageCodesDecorationFilter.cs" />
     <Compile Include="DecorationFilters\DefaultFinishActionsDecorationFilter.cs" />
-    <Compile Include="Common\Navigation.cs" />
+    <Compile Include="Modules\Navigation\SiteNavigation.cs" />
     <Compile Include="ValidationFilters\HtmlValidationFilter.cs" />
     <Compile Include="ValidationFilters\XmlValidationFilter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -81,8 +87,12 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Layout.resx</DependentUpon>
     </Compile>
+    <Compile Include="Views\CodeSampleViews\PageScopeViaPageDataView.cs" />
+    <Compile Include="Views\ComponentViews\CodeView.cs" />
+    <Compile Include="Views\ComponentViews\CodeWithResolvingView.cs" />
     <Compile Include="Views\PageViews\CssView.cs" />
     <Compile Include="Views\PageViews\HtmlView.cs" />
+    <Compile Include="Views\PageViews\JsonView.cs" />
     <Compile Include="Views\PageViews\JsView.cs" />
     <Compile Include="Views\PageViews\Layout.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -158,6 +168,9 @@
     <Content Include="Views\SystemViews\Layout\PreviewErrorView.html" />
     <Content Include="Views\CodeSampleViews\Layout\XTemplateExample1View.html" />
     <Content Include="Views\CodeSampleViews\Layout\XTemplateExample2View.html" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Common\TomExtensions.ItemField.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

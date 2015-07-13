@@ -43,7 +43,7 @@ namespace Chimote.Tridion.Templating.Intranet.Views.ComponentViews
             // Instantiates a new dynamic XTemplate object through the NewXTemplate() method
             // which is defined in the base View<TModel>.
 
-            dynamic xt = this.NewXTemplate(Layout.ArticleView);
+            var xt = this.NewXTemplate(Layout.ArticleView);
 
             // Assigns values to {Title} and {Introduction} variables.
 

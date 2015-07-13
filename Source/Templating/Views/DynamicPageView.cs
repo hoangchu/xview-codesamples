@@ -31,19 +31,27 @@ namespace Chimote.Tridion.Templating.Intranet.Views
             {
                 var viewType = Type.GetType(this.ViewMapper.ViewFullTypeName);
 
-                if (viewType != null)
+                if (viewType != null && typeof(DynamicComponentView).IsAssignableFrom(viewType))
                 {
-                    if (typeof(DynamicComponentView).IsAssignableFrom(viewType))
-                    {
-                        var view = (DynamicComponentView)Activator.CreateInstance(viewType);
-                        view.Context = this.Context;
+                    var view = (DynamicComponentView)Activator.CreateInstance(viewType);
+                    view.Context = this.Context;
 
-                        return view;
-                    }
+                    return view;
                 }
             }
 
             return null;
+        }
+
+        protected void PopulatePresentationPageData(ComponentPresentation presentation)
+        {
+            using (var view = this.GetDynamicComponentView(presentation.ComponentTemplate))
+            {
+                if (view != null)
+                {
+                    view.PopulatePageData(presentation);
+                }
+            }
         }
 
         /// <summary>
@@ -55,13 +63,7 @@ namespace Chimote.Tridion.Templating.Intranet.Views
         /// <returns>String representing the render output of a Component Presentation.</returns>
         protected override string RenderPresentation(Component component, ComponentTemplate template)
         {
-            using (var view = this.GetDynamicComponentView(template))
-            {
-                if (view != null)
-                {
-                    view.SetPageScopeData(component, template);
-                }
-            }
+            this.PopulatePresentationPageData(new ComponentPresentation(component, template));
 
             return base.RenderPresentation(component, template);
         }

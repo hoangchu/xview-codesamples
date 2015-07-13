@@ -134,6 +134,46 @@ namespace Chimote.Tridion.Templating.Intranet.Controllers
         }
 
         /// <summary>
+        /// Creates and returns a ComponentImage object for the given multimediaComponent.
+        /// </summary>
+        /// <param name="multimediaComponent">Multimedia component containing an image.</param>
+        /// <param name="forceDownloadExternal">Force an external image to be downloaded and published.</param>
+        /// <returns>ComponentImage object.</returns>
+        public ComponentImage CreateImage(Component multimediaComponent, bool forceDownloadExternal = false)
+        {
+            Guard.ArgumentIsNotNull(multimediaComponent, "multimediaComponent");
+
+            return new ComponentImage(multimediaComponent, this.Engine.PublishingContext.RenderedItem, forceDownloadExternal);
+        }
+
+        public MultimediaItem CreateMultimediaItem(Component multimediaItem, bool forceDownloadExternal = false)
+        {
+            Guard.ArgumentIsNotNull(multimediaItem, "multimediaItem");
+
+            return new MultimediaItem(multimediaItem, this.Engine.PublishingContext.RenderedItem, forceDownloadExternal);
+        }
+
+        public MultimediaItem CreateCachedMultimediaItem(Component multimediaComponent)
+        {
+            Guard.ArgumentIsNotNull(multimediaComponent, "multimediaComponent");
+
+            var cacheKey = this.GenerateCacheKey(multimediaComponent, keyPrefix: "multimedia", publicationTargetRelevant: true);
+
+            if (this.Cache.Contains(cacheKey))
+            {
+                this.Logger.Debug(string.Format("Cache: get multimedia item with key {0} from cache.", cacheKey));
+
+                return (MultimediaItem)this.Cache.Get(cacheKey);
+            }
+
+            var multimediaItem = this.CreateMultimediaItem(multimediaComponent);
+            this.Logger.Debug(string.Format("Cache: set multimedia item with key {0} into cache.", cacheKey));
+            this.Cache.Set(cacheKey, multimediaItem);
+
+            return multimediaItem;
+        }
+
+        /// <summary>
         /// This custom PageScope (which is an IDataContainer) allows PageScope data sharing among
         /// PT and all CTs on the same Page is a dynamic publishing scenario.
         /// 

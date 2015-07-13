@@ -5,7 +5,6 @@ using Chimote.Tridion.Templating.Intranet.Controllers;
 using Chimote.Tridion.Templating.Intranet.Views.SystemViews;
 
 using Tridion.ContentManager.CommunicationManagement;
-using Tridion.ContentManager.Templating;
 
 using XView;
 
@@ -22,10 +21,34 @@ namespace Chimote.Tridion.Templating.Intranet.Views
     public abstract class View<TModel> : View<IntranetContext, TModel>
     {
         private TridionLogger logger;
+        private IntranetPageData pageData;
 
         protected TridionLogger Logger
         {
-            get { return this.logger ?? (this.logger = new TridionLogger(TemplatingLogger.GetLogger(this.GetType()))); }
+            get { return this.logger ?? (this.logger = new TridionLogger(this.GetType())); }
+        }
+
+        protected IntranetPageData PageData
+        {
+            get
+            {
+                if (this.pageData == null)
+                {
+                    const string pageDataKey = "pagedata";
+
+                    if (this.Context.PageScope.ContainsKey(pageDataKey))
+                    {
+                        this.pageData = (IntranetPageData)this.Context.PageScope[pageDataKey];
+                    }
+                    else
+                    {
+                        this.pageData = new IntranetPageData();
+                        this.Context.PageScope.Add(pageDataKey, this.pageData);
+                    }
+                }
+
+                return this.pageData;
+            }
         }
 
         /// <summary>
@@ -80,7 +103,7 @@ namespace Chimote.Tridion.Templating.Intranet.Views
             // PostconditionsCheck() gets executed after output decoration and validation are done.
         }
 
-        protected XTemplate NewXTemplate(string template)
+        protected dynamic NewXTemplate(string template)
         {
             var xt = new XTemplate(template);
 
@@ -108,6 +131,7 @@ namespace Chimote.Tridion.Templating.Intranet.Views
             this.WriteDebugInfoLine("TemplateName", this.Context.Template.Title);
             this.WriteDebugInfoLine("TemplateType", this.Context.Template is PageTemplate ? "Page" : "Component" + "Template");
             this.WriteDebugInfoLine("Publication", this.Context.Publication.Title);
+
             // Etc.
         }
 

@@ -1,6 +1,4 @@
-﻿using Tridion.ContentManager.ContentManagement.Fields;
-
-using XView;
+﻿using XView;
 
 namespace Chimote.Tridion.Templating.Intranet.Views.SharedViews
 {
@@ -8,14 +6,14 @@ namespace Chimote.Tridion.Templating.Intranet.Views.SharedViews
     {
         protected override string Render()
         {
-            dynamic xt = this.NewXTemplate(Layout.PromoboxView);
+            var xt = this.NewXTemplate(Layout.PromoboxView);
             xt.Title = this.Fields.GetText("title");
             xt.Introduction = this.Fields.GetText("introduction");
             xt.Text = this.Fields.GetText("text");
 
-            var image = this.Fields.GetComponent("image");
-            xt.ImageUrl = this.Context.PublishBinaryAndReturnUrl(image);
-            xt.ImageAlt = image.GetMetadataField<TextField>("alt").Value;
+            var image = this.Context.CreateImage(this.Fields.GetComponent("image"));
+            image.SetAttribute("class", "promo-image");
+            xt.ImageTag = image.ToString();
 
             var link = this.Fields.GetComponent("link");
             xt.LinkUri = link.Id;

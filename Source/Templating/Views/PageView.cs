@@ -10,8 +10,6 @@ namespace Chimote.Tridion.Templating.Intranet.Views
 {
     /// <summary>
     /// Represents the base View to render Page model.
-    /// This base View is optional, but useful in large implementations.
-    /// 
     /// In this View define Page related properties and methods to be re-used
     /// in derived Views.
     /// </summary>
@@ -27,11 +25,17 @@ namespace Chimote.Tridion.Templating.Intranet.Views
             get { return this.metadata ?? (this.metadata = this.Model.GetMetadataFields()); }
         }
 
+        protected override void InitializeRender()
+        {
+            base.InitializeRender();
+            this.metadata = null;
+        }
+
         /// <summary>
         /// Renders output of all component presentations on the Page (Model).
         /// </summary>
         /// <returns>Presentation output string.</returns>
-        protected string RenderPresentations()
+        protected virtual string RenderPresentations()
         {
             var sb = new StringBuilder();
 
