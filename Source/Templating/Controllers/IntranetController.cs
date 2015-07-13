@@ -41,10 +41,13 @@ namespace Chimote.Tridion.Templating.Intranet.Controllers
                 this.Context.Configuration.LanguageCode));
 
             this.RegisterOutputFilter(new DefaultFinishActionsDecorationFilter(this.Context));
+            
             // Etc.
 
             this.RegisterOutputFilter(new HtmlValidationFilter(this.Context));
             this.RegisterOutputFilter(new XmlValidationFilter());
+            this.RegisterOutputFilter(new JsonValidationFilter());
+
             // Etc.
         }
 

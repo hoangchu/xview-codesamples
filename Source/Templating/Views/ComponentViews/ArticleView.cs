@@ -15,6 +15,13 @@ namespace Chimote.Tridion.Templating.Intranet.Views.ComponentViews
     /// </summary>
     public class ArticleView : ComponentView
     {
+        protected override void InitializeRender()
+        {
+            base.InitializeRender();
+            this.EnableOutputDecoration = true;
+            this.EnableOutputDecoration = true;
+        }
+
         protected override void CheckPreconditions()
         {
             DebugGuard.Requires(this.Model.Schema.Title == "Article");
@@ -29,13 +36,6 @@ namespace Chimote.Tridion.Templating.Intranet.Views.ComponentViews
             // Make sure output does not contain dummy text.
 
             Guard.Ensures(!viewOutput.Contains("Lorem Ipsum"));
-        }
-
-        protected override void InitializeRender()
-        {
-            base.InitializeRender();
-            this.EnableOutputDecoration = true;
-            this.EnableOutputDecoration = true;
         }
 
         protected override string Render()
@@ -62,20 +62,20 @@ namespace Chimote.Tridion.Templating.Intranet.Views.ComponentViews
             foreach (var paragraph in paragraphs)
             {
                 paragraphIndex++;
-                Component image = paragraph.GetComponent("image");
+                Component imageComponent = paragraph.GetComponent("image");
 
                 // image is a optional field, therefore the "image" block will only be parsed
                 // if there is an image available in a paragraph.
 
-                if (image != null)
+                if (imageComponent != null)
                 {
-                    ItemFields imageMetadata = image.GetMetadataFields();
+                    var image = this.Context.CreateImage(imageComponent);
 
                     // Assigns values to {ImageUrl}, {ImageAlt} and {ImageTitle} variables.
 
-                    xt.ImageUrl = this.Context.PublishBinaryAndReturnUrl(image);
-                    xt.ImageAlt = imageMetadata.GetText("alt");
-                    xt.ImageTitle = imageMetadata.GetText("title") ?? xt.ImageAlt;
+                    xt.ImageUrl = image.Url;
+                    xt.ImageAlt = image.Alt;
+                    xt.ImageTitle = image.Title ?? image.Alt;
 
                     // Parses nested block "image". The "image" block will only be included
                     // to the "paragraph" block output if that paragraph has an image.

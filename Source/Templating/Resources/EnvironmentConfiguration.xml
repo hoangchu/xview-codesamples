@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<config>
+  <development>
+    <entry key="ContentManagerUrl">http://tridiondev.mycompany.com</entry>
+    <entry key="LiveHostname">live.dev.mycompany.com</entry>
+    <entry key="StagingHostname">staging.dev.mycompany.com</entry>
+    <entry key="StagingTargetUri">tcm:0-18-65537</entry>
+    <entry key="MediaManagerHostname">mycompany-accept.sdlmedia.com</entry>
+    <entry key="TempFolderPath">C:\Temp</entry>
+  </development>
+  <test>
+    <entry key="ContentManagerUrl">http://tridiontest.mycompany.com</entry>
+    <entry key="LiveHostname">live.test.mycompany.com</entry>
+    <entry key="StagingHostname">staging.test.mycompany.com</entry>
+    <entry key="StagingTargetUri">tcm:0-12-65537</entry>
+    <entry key="MediaManagerHostname">mycompany-accept.sdlmedia.com</entry>
+    <entry key="TempFolderPath">C:\Temp</entry>
+  </test>
+  <production>
+    <entry key="ContentManagerUrl">http://tridionlive.mycompany.com</entry>
+    <entry key="LiveHostname">www.mycompany.org</entry>
+    <entry key="StagingHostname">staging.mycompany.org</entry>
+    <entry key="StagingTargetUri">tcm:0-12-65537</entry>
+    <entry key="MediaManagerHostname">mycompany.sdlmedia.com</entry>
+    <entry key="TempFolderPath">C:\Temp</entry>
+  </production>
+</config>

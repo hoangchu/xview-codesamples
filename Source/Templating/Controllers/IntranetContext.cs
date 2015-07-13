@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
+using System.Runtime.Caching;
 
 using Chimote.Tridion.Templating.Intranet.Common;
 using Chimote.Tridion.Templating.Intranet.Configurations;
@@ -32,8 +33,48 @@ namespace Chimote.Tridion.Templating.Intranet.Controllers
     public class IntranetContext : TridionContext
     {
         private PublicationConfiguration configuration;
+        private EnvironmentConfiguration environment;
         private IDictionary<string, string> labels;
         private TemplatingLogger logger;
+
+        public EnvironmentConfiguration Environment
+        {
+            get
+            {
+                if (this.environment == null)
+                {
+                    const string environmentConfigurationCacheKey = "environment-configuration";
+
+                    if (this.Cache.Contains(environmentConfigurationCacheKey))
+                    {
+                        this.environment = (EnvironmentConfiguration)this.Cache.Get(environmentConfigurationCacheKey);
+                    }
+                    else
+                    {
+                        var systemKeywordWebDavUrl = this.Publication.WebDavUrl + "/System/Configuration.tkw";
+                        var systemKeyword = this.Engine.GetObject<Keyword>(systemKeywordWebDavUrl);
+
+                        if (systemKeyword == null)
+                        {
+                            var errorMessage =
+                                string.Format(
+                                    "Could not find the Configuration keyword {0} to determine the environment",
+                                    systemKeywordWebDavUrl);
+
+                            throw new Exception(errorMessage);
+                        }
+
+                        var environmentValue = systemKeyword.GetMetadataField<TextField>("environment").Value;
+                        this.environment = new EnvironmentConfiguration(environmentValue);
+
+                        this.Cache.Set(environmentConfigurationCacheKey, this.environment,
+                            new CacheItemPolicy { AbsoluteExpiration = DateTimeOffset.Now.AddHours(24.0) });
+                    }
+                }
+
+                return this.environment;
+            }
+        }
 
         private TemplatingLogger Logger
         {
@@ -171,6 +212,22 @@ namespace Chimote.Tridion.Templating.Intranet.Controllers
             this.Cache.Set(cacheKey, multimediaItem);
 
             return multimediaItem;
+        }
+
+        public T GetContextIdentifiableObject<T>(string uri) where T : IdentifiableObject
+        {
+            return this.GetContextIdentifiableObject<T>(new TcmUri(uri));
+        }
+
+        public T GetContextIdentifiableObject<T>(IdentifiableObject identifiableObject) where T : IdentifiableObject
+        {
+            return this.GetContextIdentifiableObject<T>(identifiableObject.Id);
+        }
+
+        public T GetContextIdentifiableObject<T>(TcmUri tcmUri) where T : IdentifiableObject
+        {
+            var contextTcmUri = TemplateUtilities.CreateTcmUriForPublication(this.Publication.Id.ItemId, tcmUri);
+            return this.Engine.GetObject<T>(contextTcmUri);
         }
 
         /// <summary>

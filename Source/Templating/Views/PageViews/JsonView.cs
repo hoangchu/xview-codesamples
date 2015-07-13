@@ -13,6 +13,7 @@ namespace Chimote.Tridion.Templating.Intranet.Views.PageViews
         {
             base.InitializeRender();
             this.EnableOutputDecoration = true;
+            this.EnableOutputValidation = true;
         }
 
         protected override string Render()
