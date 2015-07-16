@@ -84,7 +84,6 @@
     <Compile Include="Controllers\IntranetViewMapper.cs" />
     <Compile Include="DecorationFilters\CountryAndLanguageCodesDecorationFilter.cs" />
     <Compile Include="DecorationFilters\DefaultFinishActionsDecorationFilter.cs" />
-    <Compile Include="Modules\Navigation\SiteNavigation.cs" />
     <Compile Include="Resources\ResourceFiles.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
