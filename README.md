@@ -114,7 +114,7 @@ XTemplate xt = new XTemplate(Layout.Article);
 IList<ItemFields> paragraphs = fields.GetEmbeddedFields("paragraphs");
 int paragraphIndex = 0;
 
-foreach(ItemFields paragraph in paragraphs)
+foreach (ItemFields paragraph in paragraphs)
 {
 	paragraphIndex++;
 	string paragraphTitle = paragraph.GetText("title);
