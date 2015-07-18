@@ -96,6 +96,8 @@ A block is an HTML snippet that can either be either omitted or parsed to add to
 A block has a begin and an end tag. Blocks can be nested. See example below.
 
 ```html
+...
+
 <!-- BEGIN: anchors -->
 <ul>
 	<!-- BEGIN: anchor -->
@@ -103,11 +105,13 @@ A block has a begin and an end tag. Blocks can be nested. See example below.
 	<!-- END: anchor -->
 </ul>
 <!-- END: anchors -->
+
+...
 ```
 
 C# code
 ```csharp
-XTemplate xt = new XTemplate(Layout.Article);
+dynamic xt = new XTemplate(Layout.Article);
 
 ...
 
@@ -131,6 +135,7 @@ xt.Parse("root.anchors");
 return xt.ToString();
 ```
 
+XTemplate is based on this nice little [PHP XTemplate class](http://www.phpxtemplate.org/). Only relevant features are rewritten in C#.
 
 [Example C# View class](https://github.com/hoangchu/xview-codesamples/blob/master/Source/Templating/Views/ComponentViews/ArticleView.cs)
 
