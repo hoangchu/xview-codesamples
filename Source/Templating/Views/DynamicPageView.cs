@@ -9,6 +9,10 @@ using XView;
 
 namespace Chimote.Tridion.Templating.Intranet.Views
 {
+    /// <summary>
+    /// Represents the base View for rendering Page model that contains
+    /// dynamic Component Presentations.
+    /// </summary>
     public abstract class DynamicPageView : PageView
     {
         private IViewMapper viewMapper;
@@ -43,7 +47,7 @@ namespace Chimote.Tridion.Templating.Intranet.Views
             return null;
         }
 
-        protected void PopulatePresentationPageData(ComponentPresentation presentation)
+        protected void PopulateDynamicPresentationPageData(ComponentPresentation presentation)
         {
             using (var view = this.GetDynamicComponentView(presentation.ComponentTemplate))
             {
@@ -63,7 +67,7 @@ namespace Chimote.Tridion.Templating.Intranet.Views
         /// <returns>String representing the render output of a Component Presentation.</returns>
         protected override string RenderPresentation(Component component, ComponentTemplate template)
         {
-            this.PopulatePresentationPageData(new ComponentPresentation(component, template));
+            this.PopulateDynamicPresentationPageData(new ComponentPresentation(component, template));
 
             return base.RenderPresentation(component, template);
         }

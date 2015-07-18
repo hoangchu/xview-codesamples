@@ -52,9 +52,9 @@ namespace Chimote.Tridion.Templating.Intranet.Views.ComponentViews
 
             IList<ItemFields> paragraphs = this.Fields.GetEmbeddedFields("paragraphs");
 
-            // Assigns value to {NumberOfAchorColumns} variable.
+            // Assigns value to {NumberOfAnchorColumns} variable.
 
-            xt.NumberOfAchorColumns = paragraphs.Count > 4 ? "2" : "1";
+            xt.NumberOfAnchorColumns = paragraphs.Count > 4 ? "2" : "1";
 
             bool showAnchors = this.Fields.GetText("show_anchors") == "Yes";
             int paragraphIndex = 0;

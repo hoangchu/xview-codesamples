@@ -9,7 +9,7 @@ using XView;
 namespace Chimote.Tridion.Templating.Intranet.Views
 {
     /// <summary>
-    /// Represents the base View to render Page model.
+    /// Represents the base View for rendering Page model.
     /// In this View define Page related properties and methods to be re-used
     /// in derived Views.
     /// </summary>
