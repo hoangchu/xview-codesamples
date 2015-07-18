@@ -1,7 +1,7 @@
 # XView Code Samples
 This project provides code samples to illustrate the usage of XView.
 
-The concept of XView is different from those of other conventional way of Tridion templating solutions. Read about the XView basic concept below to get started.
+The concept of XView is different from those of other conventional Tridion templating solutions. Read about the XView basic concept below to get started.
 
 # XView Basic Concept
 Before diving into XView coding it would be good to know about the basic concept of XView.
