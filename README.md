@@ -1,6 +1,8 @@
 # XView Code Samples
 This project provides code samples to illustrate the usage of XView.
 
+XView project can be found here: [http://xview.codeplex.com](http://xview.codeplex.com)
+
 The concept of XView is different from those of other conventional Tridion templating solutions. Read about the XView basic concept below to get started.
 
 # XView Basic Concept
