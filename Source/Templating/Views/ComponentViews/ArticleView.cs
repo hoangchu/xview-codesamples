@@ -35,7 +35,7 @@ namespace Chimote.Tridion.Templating.Intranet.Views.ComponentViews
         {
             // Make sure output does not contain dummy text.
 
-            Guard.Ensures(!viewOutput.Contains("Lorem Ipsum"));
+            Guard.Ensures(!viewOutput.ToLower().Contains("lorem ipsum"));
         }
 
         protected override string Render()

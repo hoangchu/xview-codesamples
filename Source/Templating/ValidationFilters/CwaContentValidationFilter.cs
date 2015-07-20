@@ -7,9 +7,9 @@ using XView;
 
 namespace Chimote.Tridion.Templating.Intranet.ValidationFilters
 {
-    public class HtmlValidationFilter : OutputValidationFilter
+    public class CwaContentValidationFilter : OutputValidationFilter
     {
-        public HtmlValidationFilter(IntranetContext context)
+        public CwaContentValidationFilter(IntranetContext context)
         {
             this.Context = context;
         }
@@ -18,7 +18,9 @@ namespace Chimote.Tridion.Templating.Intranet.ValidationFilters
 
         public override bool CanHandle(ViewOutputType viewOutputType)
         {
-            return viewOutputType == ViewOutputType.Html;
+            // Handle all output types.
+
+            return true;
         }
 
         public override void Validate(string text)

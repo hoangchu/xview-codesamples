@@ -6,7 +6,10 @@ using XView;
 
 namespace Chimote.Tridion.Templating.Intranet.Views.CodeSampleViews
 {
-    public class XTemplateExample1View : View<Component>
+    /// <summary>
+    /// This example is the same as XTemplateExample1View, but with dynamic XTemplate.
+    /// </summary>
+    public class XTemplateExample1DynamicView : View<Component>
     {
         protected override string Render()
         {
@@ -15,13 +18,13 @@ namespace Chimote.Tridion.Templating.Intranet.Views.CodeSampleViews
             // of this file is exposed by the resources file Layout through the property
             // Layout.XTemplateExample1View
 
-            XTemplate xt = new XTemplate(Layout.XTemplateExample1View);
+            dynamic xt = new XTemplate(Layout.XTemplateExample1View);
 
             // Assigns User.Description to variable {UserName}.
             // Assigns DateTime.Now.ToString("D") to variable {CurrentDate}.
 
-            xt.Assign("UserName", this.Model.Session.User.Description);
-            xt.Assign("CurrentDate", DateTime.Now.ToString("D"));
+            xt.UserName = this.Model.Session.User.Description;
+            xt.CurrentDate = DateTime.Now.ToString("D");
 
             // Parses the "administrator" block, if the current user is Administrator.
 
@@ -29,7 +32,7 @@ namespace Chimote.Tridion.Templating.Intranet.Views.CodeSampleViews
             {
                 // Assigns value "God" to variable {Role}.
 
-                xt.Assign("Role", "Root");
+                xt.Role = "Root";
 
                 // Block "administrator" is a child block of the "root" block.
                 // The "root" block is the most outer block, which is a special

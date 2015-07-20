@@ -44,7 +44,8 @@ namespace Chimote.Tridion.Templating.Intranet.Controllers
             
             // Etc.
 
-            this.RegisterOutputFilter(new HtmlValidationFilter(this.Context));
+            this.RegisterOutputFilter(new TestContentValidationFilter());
+            this.RegisterOutputFilter(new CwaContentValidationFilter(this.Context));
             this.RegisterOutputFilter(new XmlValidationFilter());
             this.RegisterOutputFilter(new JsonValidationFilter());
 
@@ -83,14 +84,11 @@ namespace Chimote.Tridion.Templating.Intranet.Controllers
 
         /// <summary>
         /// This is the hook where you can implement a model mapper to provide custom ViewModels.
-        /// In general XView term I believe custom ViewModels for entry Views would introduce extra 
-        /// overhead without any gain. Therefore I see no need for a "model mapper" in normal circustances.
-        /// 
-        /// In addition, a View class in XView is a C# class and is powerful. It can be utilized as
-        /// a controller to dispatch render requests to other Views using partial render.
+        /// In normal circumstance a model mapper is not needed. It would only introduce extra 
+        /// overheader without much gain.
         ///
         /// However, if you'd run into scenarios in which employing custom ViewModels for entry Views 
-        /// would be benificial, then feel free to do so!
+        /// would be benificial, then feel free to introduce a model mapper!
         /// </summary>
         protected override object GetCustomViewModel()
         {
@@ -106,9 +104,6 @@ namespace Chimote.Tridion.Templating.Intranet.Controllers
             //   respectively.
 
             // - Etc.
-
-            // You may want to utilize the memory cache (this.Context.Cache) to keep track
-            // of a mapped table for speedy model mapping on subsequent mappings.
 
             return null;
         }
