@@ -30,6 +30,8 @@ namespace Chimote.Tridion.Templating.Intranet.Controllers
         /// </summary>
         protected override void InitializeViewRequest()
         {
+            // Register a XhtmlResolver to do Xhtml resolving automatically.
+
             this.RegisterXhtmlResolver();
 
             // Registers decoration filters to do view output decorations.
@@ -85,7 +87,7 @@ namespace Chimote.Tridion.Templating.Intranet.Controllers
         /// <summary>
         /// This is the hook where you can implement a model mapper to provide custom ViewModels.
         /// In normal circumstance a model mapper is not needed. It would only introduce extra 
-        /// overheader without much gain.
+        /// overhead without much gain.
         ///
         /// However, if you'd run into scenarios in which employing custom ViewModels for entry Views 
         /// would be benificial, then feel free to introduce a model mapper!
