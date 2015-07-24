@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
 using System.Text;
+using System.Web;
 
 using Tridion.ContentManager.ContentManagement;
 using Tridion.ContentManager.Publishing.Rendering;
@@ -224,7 +225,7 @@ namespace Chimote.Tridion.Templating.Intranet.Common
 
             foreach (var attribute in this.attributes)
             {
-                sb.AppendFormat("{0}=\"{1}\" ", attribute.Key, attribute.Value.Replace("\"", "&quot;"));
+                sb.AppendFormat("{0}=\"{1}\" ", attribute.Key, HttpUtility.HtmlAttributeEncode(attribute.Value));
             }
 
             if (this.Width != Int32.MinValue)

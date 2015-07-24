@@ -17,6 +17,8 @@ In XView **View** classes are mapped with **Page Templates** and **Component Tem
 
 A **Page** or a **Component** is by default dispatched to the View as a **Model**. The dispatching is done by the Controller. See Controller section below.
 
+The View contains logic to render the Model.
+
 [Example View class](https://github.com/hoangchu/xview-codesamples/blob/master/Source/Templating/Views/ComponentViews/ArticleView.cs).
 
 ## Context
@@ -37,7 +39,7 @@ Templates in Tridion are called Compound Templates. Each Compound Template can c
 
 In XView each **Compound Template** has **one TBB**. The same TBB is used on all Compound Templates inside the same Blueprint. (The Context). This TBB is the **Controller** in XView.
 
-The Controller in XView is a [Front Controller](https://en.wikipedia.org/wiki/Front_Controller_pattern). It interfaces with Tridion via the ITemplate interface. A Controller is responsible for tasks including the following.
+The Controller in XView is a [Front Controller](https://en.wikipedia.org/wiki/Front_Controller_pattern). It interfaces with Tridion via the ITemplate interface. The Controller is responsible for tasks including the following.
 
 - Decoupling Tridion (to allow development and maintenance of Template logic and layouts outside of Tridion).
 - Controlling the execution flow of a rendition.
