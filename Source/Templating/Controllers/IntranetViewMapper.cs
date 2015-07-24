@@ -19,15 +19,15 @@ namespace Chimote.Tridion.Templating.Intranet.Controllers
                     case "Homepage":
                         // Routing CTs in "Homepage" folder to "HomepageViews" sub-namespace.
 
-                        return this.ProjectRootNamespace + "Views.HomepageViews";
+                        return this.ProjectRootNamespace + ".Views.HomepageViews";
                     case "Mobile":
                         // Routing CTs in "Mobile" folder to "MobileViews" sub-namespace.
 
-                        return this.ProjectRootNamespace + "Views.MobileViews";
+                        return this.ProjectRootNamespace + ".Views.MobileViews";
                     case "System":
                         // Routing CTs in "System" folder to "SystemViews" sub-namespace.
 
-                        return this.ProjectRootNamespace + "Views.SystemViews";
+                        return this.ProjectRootNamespace + ".Views.SystemViews";
                 }
             }
 

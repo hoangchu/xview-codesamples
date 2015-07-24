@@ -94,7 +94,7 @@ namespace Chimote.Tridion.Templating.Intranet.Views
         }
 
         /// <summary>
-        /// Providers the ability to do postconditions check after output decoration and validation.
+        /// Provides the ability to do postconditions check after output decoration and validation.
         /// Override this method to do postconditions check for individual views.
         /// </summary>
         /// <param name="viewOutput">Decorated and validated view output.</param>

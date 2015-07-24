@@ -83,37 +83,5 @@ namespace Chimote.Tridion.Templating.Intranet.Views.CodeSampleViews {
                 return ResourceManager.GetString("XTemplateExample1View", resourceCulture);
             }
         }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to &lt;!DOCTYPE html&gt;
-        ///
-        ///&lt;html lang=&quot;en&quot; xmlns=&quot;http://www.w3.org/1999/xhtml&quot;&gt;
-        ///    &lt;head&gt;
-        ///        &lt;meta charset=&quot;utf-8&quot; /&gt;
-        ///        &lt;title&gt;&lt;/title&gt;
-        ///    &lt;/head&gt;
-        ///    &lt;body&gt;
-        ///    
-        ///        &lt;!-- BEGIN: paragraph --&gt;
-        ///        &lt;div&gt;
-        ///            &lt;h2&gt;{Title}&lt;/h2&gt;
-        ///            {Text}
-        ///            &lt;!-- BEGIN: --&gt;
-        ///            &lt;span&gt;{}&lt;/span&gt;
-        ///            &lt;ul&gt;
-        ///                &lt;li&gt;{}&lt;/li&gt;
-        ///            &lt;/ul&gt;
-        ///            &lt;!-- END: --&gt;
-        ///        &lt;/div&gt;
-        ///        &lt;!-- BEGIN: paragraph --&gt;
-        ///    
-        ///        &lt;!-- BEGIN: --&gt;
-        ///    [rest of string was truncated]&quot;;.
-        /// </summary>
-        internal static string XTemplateExample2View {
-            get {
-                return ResourceManager.GetString("XTemplateExample2View", resourceCulture);
-            }
-        }
     }
 }
