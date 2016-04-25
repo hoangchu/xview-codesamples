@@ -1,13 +1,26 @@
 # XView Code Samples
 This project provides code samples to illustrate the usage of XView.
 
-XView project can be found here: [http://xview.codeplex.com](http://xview.codeplex.com)
-
-The concept of XView is different from those of other conventional Tridion templating solutions. Read about the XView basic concept below to get started.
+XView project can be found here: [http://xview.codeplex.com](http://xview.codeplex.com).
 
 # XView Basic Concept
-Before diving into XView coding it would be good to know about the basic concept of XView.
+Before diving into XView coding it's recommended to get to know the basic concept of XView.
 
+## Decoupled And Clean
+XView comes with a tiny XView.dll (less than 40Kb) and has a very small and clean footprint in Tridion, thanks to its logical and practical decoupled design.
+
+An XView templates implemenation shows the following characteristics on the surface:
+
+- An XView templates project is a C# Class Library that has a reference to the XView.dll (beside some Tridion dlls).
+- An XView project produces a DLL and a Template Building Block (TBB).
+- The TBB is an XView controller and it's used in all templates in Tridion.
+- Each Tridion template has one single TBB: the XView controller.
+- The XView controller TBB produces one package variable: Output.
+- Some happy faces.
+
+The logical and practical design makes templates development and maintenance a joy.
+
+The picture below depicts the XView's decoupled architecture.
 ![XView Architecture](xview.png)
 
 ## View and Model
@@ -41,12 +54,10 @@ In XView each **Compound Template** has **one TBB**. The same TBB is used on all
 
 The Controller in XView is a [Front Controller](https://en.wikipedia.org/wiki/Front_Controller_pattern). It interfaces with Tridion via the ITemplate interface. The Controller is responsible for tasks including the following.
 
-- Decoupling Tridion (to allow development and maintenance of Template logic and layouts outside of Tridion).
+- Decoupling Tridion (to allow development and maintenance of template logic and layouts outside of Tridion).
 - Controlling the execution flow of a rendition.
-- Mapping Templates with Views using a ViewMapper.
-- Loading TridionContext and injecting it into Views
-- Dispatching Models to Views
-- Rendering Views & returning View outputs to Tridion.
+- Loading and injecting TridionContext into Views.
+- Dispatching render tasks to Views.
 
 In XView the single thing that is mandatory is to create a `Controller` derived class inside the `[Project root namespace].Controllers` namespace. This derived Controller is the TBB used on all Templates inside the same Blueprint.
 
