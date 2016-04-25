@@ -85,7 +85,7 @@ namespace Chimote.Tridion.Templating.Intranet.Controllers
         }
 
         /// <summary>
-        /// This is the hook where you can implement a model mapper to provide custom ViewModels.
+        /// This is good spot where you can implement a model mapper to provide custom ViewModels.
         /// In normal circumstance a model mapper is not needed. It would only introduce extra 
         /// overhead without much gain.
         ///
