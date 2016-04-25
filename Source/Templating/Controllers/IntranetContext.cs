@@ -231,13 +231,12 @@ namespace Chimote.Tridion.Templating.Intranet.Controllers
         }
 
         /// <summary>
-        /// This custom PageScope (which is an IDataContainer) allows PageScope data sharing among
-        /// PT and all CTs on the same Page is a dynamic publishing scenario.
+        /// This custom PageScope makes PageScope data sharing possible among PT and all
+        /// DCPs on the same Page in a dynamic publishing scenario.
         /// 
-        /// If your Tridion implementation does not deal with dynamic publishing or does not
-        /// have the need to share data among templates on the sample Page in a dynamic publishing
-        /// scenario, then omit this method. The default PageScope provided by XView should be
-        /// sufficient in that case.
+        /// If your Tridion implementation does not deal with DCPs or does not have the need
+        /// for sharing data among PT and dynamic templates residing on the same Page, then omit  
+        /// this method. The default PageScope provided by XView should be sufficient in that case.
         /// </summary>
         /// <returns>IDictionary{string, object} representing the PageScope.</returns>
         protected override IDictionary<string, object> GetCustomPageScope()
