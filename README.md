@@ -7,7 +7,7 @@ XView project can be found here: [http://xview.codeplex.com](http://xview.codepl
 Before diving into the code it's recommended to get to know the basic concept of XView.
 
 ## Decoupled And Clean
-XView is a Model-View-Controller (MVC) implementation tailored for SDL Tridion TOM.NET templates development. The footprint of XView in Tridion is very small and clean thanks to its practical decoupled design.
+XView is a Model-View-Controller (MVC) implementation tailored for SDL Tridion TOM.NET templates development.
 
 XView comes with a tiny XView.dll (less than 40KB).
 
@@ -21,6 +21,10 @@ Here are some of the characteristics of a SDL Tridion TOM.NET templates project 
 - That TBB is the Controller derived class and it's used in all Compound Templates in Tridion.
 - Each Compound Template has one single TBB: the Controller derived class.
 - The Controller derived class produces one package variable: Output.
+
+The XView Controller acts as a single point of contact to isolate Tridion from the XView subsystem in which all template components and logic reside. This, for example, makes it possible to do templates development and maintenance outside of Tridion.
+
+Thanks to this practical decoupled design the footprint of XView in Tridion becomes very small and clean. (Just one single TBB).
 
 The picture below depicts the XView's decoupled architecture.
 ![XView Architecture](xview.png)
