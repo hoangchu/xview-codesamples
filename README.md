@@ -9,39 +9,41 @@ Before diving into XView coding it's recommended to get to know the basic concep
 ## Decoupled And Clean
 XView comes with a tiny XView.dll (less than 40Kb) and has a very small and clean footprint in Tridion, thanks to its logical and practical decoupled design.
 
-An XView templates implemenation shows the following characteristics on the surface:
+Here are some of the characteristics of a TOM.NET templates project using XView:
 
-- An XView templates project is a C# Class Library that has a reference to the XView.dll (beside some Tridion dlls).
-- An XView project produces a DLL and a Template Building Block (TBB).
-- The TBB is an XView controller and it's used in all templates in Tridion.
-- Each Tridion template has one single TBB: the XView controller.
-- The XView controller TBB produces one package variable: Output.
+- A C# class library that has a reference to the XView.dll (beside some Tridion dlls).
+- That C# class library produces a DLL and a Template Building Block (TBB).
+- That TBB is an XView Controller and it's used in all Compound Templates in Tridion.
+- Each Compound Template has one single TBB: the XView Controller.
+- The XView Controller produces one package variable: Output.
 - Some happy faces.
 
-The logical and practical design makes templates development and maintenance a joy.
+As many can agree that developing .NET class libraries can be one of the most satisfying coding experiences, it is fair to say that it's a joy to code TOM.NET templates class libraries using XView. More so, if you've experienced otherwise (i.e. without XView).
 
 The picture below depicts the XView's decoupled architecture.
 ![XView Architecture](xview.png)
 
-## View and Model
-Tridion templating essentially involves developing Page Templates to render Pages and Component Templates to render Components.
+## View 
+Tridion templating essentially involves developing Page Templates and Component Templates to respectively render Pages and Components,.
 
-In XView **View** classes are mapped with **Page Templates** and **Component Templates**. Each View class can be mapped to one or more Templates.
+In XView **View** classes are mapped to **Page Templates** and **Component Templates**. For each Template in Tridion there is a View class in an XView templates class library. It is possible to map two or more Templates to a single View class.
 
-A **Page** or a **Component** is by default dispatched to the View as a **Model**. The dispatching is done by the Controller. See Controller section below.
-
-The View contains logic to render the Model.
+See section ViewMapper bellow for mapping details.
 
 [Example View class](https://github.com/hoangchu/xview-codesamples/blob/master/Source/Templating/Views/ComponentViews/ArticleView.cs).
+
+## Model
+
+By default a Tridion **Page** object or a **Component** object is injected into a View as a **Model**. Model is a strongly typed property of a View class. The Model of a View that's mapped to a Page Template has the type Page. The Model of a View that's mapped to a Component Template has the type Component.
 
 ## Context
 The rendition of a Component or Page always take place inside a **Publication**. This Publication is part of a **Blueprint**. (Be it a single Publication Blueprint). A Blueprint exists in a **Tridion Content Manager instance** which runs inside an **environment** (as in DTAP).
 
-Common business rules and high-level content structures are normally defined on Publication and Blueprint level. For example, in a multilingual website implementation it is common to have a country, a language and a publication configuration. Publication configuration, for example, is defined on Blueprint level and localized in each Publication.  
+Common business rules and high-level content structures are normally defined on Publication and Blueprint level. For example, in a multilingual website implementation it is common to have a country, a language and a publication configuration. Publication configuration, for example, is defined on Blueprint level (parent Publication) and localized in each child Publication.  
 
 In XView the **TridionContext** class embodies the context in which a Page or a Component rendition takes place. The TridionContext **encapsulates** and **exposes** the **common business rules**, **high-level content structures** and **configurations**, and **environment data**.
 
-The TridionContext object is loaded and injected into the View to make it "context aware".
+The TridionContext object is loaded and injected into a View to make a View "context aware".
 
 The default TridionContext class contains properties and methods that are applicable to all Tridion implementations. XView allows to extend the TridionContext. It should be a common thing to extend the TridionContext to implement project specific business rules and configurations.
 
@@ -64,7 +66,9 @@ In XView the single thing that is mandatory is to create a `Controller` derived 
 [Example Controller derived class](https://github.com/hoangchu/xview-codesamples/blob/master/Source/Templating/Controllers/IntranetController.cs).
 
 ## ViewMapper
-Each Compound Template in Tridion is mapped with a View in an XView class library implementation. The mapping is done by the default ViewMapper via the Controller. The default View mapping logic is based on Template and View naming convention.
+By default Page Templates are mapped to View classes inside the PageViews subnamespace while Component Templates are mapped to View classes inside ComponentViews subnamespace. The mapping of Templates to Views is done automatically by the default ViewMapper class. 
+
+The default mapping logic is based on Template and View naming convention.
 
 Examples:
 
@@ -72,7 +76,7 @@ Examples:
 
 - A Page Template named `Xml` is mapped with a View named `XmlView`. This View's full name is `[Project root namespace].Views.PageViews.XmlView`.
 
-It is possible to provide custom view mapping logic by creating a ViewMapper derived class and override a specific method or by creating a new class that implements the IViewMapper interface.
+It is possible to provide custom mapping logic by creating a ViewMapper derived class and override a specific method, or by creating a new class that implements the IViewMapper interface.
 
 [Example ViewMapper derived class](https://github.com/hoangchu/xview-codesamples/blob/master/Source/Templating/Controllers/IntranetViewMapper.cs).
 
@@ -92,26 +96,45 @@ OutputDecorationFilter and OutputValidationFilter derived classes can be registe
 [Example of how to register OutputDecorationFilter or OutputValidationFilter derived types inside a Controller](https://github.com/hoangchu/xview-codesamples/blob/master/Source/Templating/Controllers/IntranetController.cs).
 
 ## XTemplate: Clean C# and HTML
-Generation of HTML output is one the essential things that you do in a Tridion templating implementation. 
+Generating HTML output is one of the main things that's done with Tridion templates development. 
 
-In XView HTML output can be generated cleanly inside a View (C# class) by loading and parsing a separate HTML template using XTemplate. HTML templates are added as .html embedded resource files to the class library. Visual Studio provides a convenient way to expose/access embedded resource via a resource Xml file (resx).
+In XView HTML output can be generated cleanly inside a View class by loading and parsing a separate HTML template using XTemplate.
 
-The syntax used in HTML template and interpreted by XTemplate is simple. There are only three tags you need to learn; a variable tag, a block begin and block end tag.
+HTML templates are added as .html embedded resource files to a class library. Visual Studio provides a convenient way to expose/access embedded resource via a resource XML file (resx).
+
+The syntax used in HTML template and interpreted by XTemplate is simple. There are only three tags you need to learn; a variable tag, a block begin and a block end tag.
 
 ### Variable
-Variables are specified in HTML templates. Assignment of values to these variables is done inside the View (C#). 
+Variables are placeholder tags defined in HTML templates. Each variable tag consists of an opening curly bracket, followed by a name, then ends with a closing curly bracket. Values can be assigned to these variable tags using XTemplate.
 
-You specify a variable by specifying a name surrounded by an open and a close curly brace. See the examples below.
+Here are some example variable tags:
 
 - `{Title}`
 - `{Introduction}`
 - `{VariableName}`
 
 ### Block
-A block is an HTML snippet that can either be omitted or parsed to add to the output. The same block can be parsed multiple times. For example in an iteration you want to output the same HTML snippet multiple times, but each  with different content.
+A block is an HTML snippet that's enclosed by an opening block tag and a closing block tag. Each block has a name. The name of a block is specified in both the opening and the closing block tags.
 
-A block has a begin and an end tag. Blocks can be nested. See example below.
+For example, here's the opening block tag for a block named "paragraph":
 
+```html
+<!-- BEGIN: paragraph -->
+```
+
+And here's the closing block tag for block "paragraph":
+
+```html
+<!-- END: paragraph -->
+```
+
+Using XTemplate you can decide whether to output a block (once or multiple times) or to omit it based on some conditions. 
+
+For example in an iteration you want to output the same HTML block multiple times, but each with different content. Or you decide not to output (omit) a "related-content" block, because there is no related content available.
+
+Bellow is an example of an HTML template and a C# View code snippet that parses the HTML template using XTemplate.
+
+HTML template
 ```html
 ...
 
@@ -138,10 +161,9 @@ int paragraphIndex = 0;
 foreach (ItemFields paragraph in paragraphs)
 {
 	paragraphIndex++;
-	string paragraphTitle = paragraph.GetText("title);
-
-	xt.ParagraphIndex = paragraphIndex.ToString();
-	xt.ParagraphTitle = paragraphTitle;
+    
+	xt.ParagraphIndex = paragraphIndex;
+	xt.ParagraphTitle = paragraph.GetText("title);
 	xt.Parse("root.anchors.anchor");
 }
 
@@ -152,7 +174,7 @@ xt.Parse("root.anchors");
 return xt.ToString();
 ```
 
-XTemplate is based on this nice little [PHP XTemplate class](http://www.phpxtemplate.org/). Relevant features are rewritten in C#.
+XTemplate is based on this nice little [PHP XTemplate class](http://www.phpxtemplate.org/). Relevant features are rewritten and new features are added to take advantage of .NET/C#.
 
 [Example C# View class](https://github.com/hoangchu/xview-codesamples/blob/master/Source/Templating/Views/ComponentViews/ArticleView.cs)
 
