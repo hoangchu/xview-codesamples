@@ -22,17 +22,17 @@ Here are some of the characteristics of a SDL Tridion TOM.NET templates project 
 - Each Compound Template has one single TBB: the Controller derived class.
 - The Controller derived class produces one package variable: Output.
 
-The XView Controller acts as a single point of contact to isolate Tridion from the XView subsystem in which all template components and logic reside. This, for example, makes it possible to do templates development and maintenance outside of Tridion.
+The XView Controller acts as a single point of contact to isolate Tridion from the XView subsystem in which all template components and logic reside. From here you have access to the TOM.NET API, the .NET BCL and all available third-party .NET libraries. 
 
-Thanks to this practical decoupled design the footprint of XView in Tridion becomes very small and clean. (Just one single TBB).
+The practical and decoupled design of XView makes TOM.NET development very powerful an clean. It simplifies templates development significantly. The footprint in Tridion can't be smaller; one TBB and one Output package variable. Maintenance becomes a breeze.
 
-The picture below depicts the XView's decoupled architecture.
+The diagram below depicts XView's decoupled design.
 ![XView Architecture](xview.png)
 
 ## View 
 SDL TOM.NET templates development essentially involves developing Page Templates and Component Templates to respectively render Pages and Components,.
 
-In XView **View** classes are mapped to **Page Templates** and **Component Templates**. For each Template in Tridion there is a View class in an XView templates class library. It is possible to map two or more Templates to a single View class.
+In XView a **View** class contains logic to render output for a Pages or Component. View classes are mapped to **Page Templates** and **Component Templates**. For each Template in Tridion there is a View class in an XView templates class library. It is possible to map two or more Templates to a single View class.
 
 See section ViewMapper bellow for mapping details.
 
