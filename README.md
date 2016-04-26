@@ -1,5 +1,5 @@
 # XView Code Samples
-This project contains code samples to demonstrate how to use XView in SDL Tridion TOM.NET templates developments.
+This project contains code samples to demonstrate how to use XView in a SDL Tridion TOM.NET templates project.
 
 XView project can be found here: [http://xview.codeplex.com](http://xview.codeplex.com).
 
@@ -14,10 +14,13 @@ XView comes with a tiny XView.dll (less than 40KB).
 Here are some of the characteristics of a SDL Tridion TOM.NET templates project using XView:
 
 - A C# class library that has a reference to the XView.dll (beside some Tridion dlls).
+- That C# class library contains View classes that match to Compound Templates in Tridion.
+- That C# class library has a TridionContext derived class.
+- That C# class library has a Controller derived class.
 - That C# class library produces a DLL and a Template Building Block (TBB).
-- That TBB is an XView Controller and it's used in all Compound Templates in Tridion.
-- Each Compound Template has one single TBB: the XView Controller.
-- The XView Controller produces one package variable: Output.
+- That TBB is the Controller derived class and it's used in all Compound Templates in Tridion.
+- Each Compound Template has one single TBB: the Controller derived class.
+- The Controller derived class produces one package variable: Output.
 
 The picture below depicts the XView's decoupled architecture.
 ![XView Architecture](xview.png)
