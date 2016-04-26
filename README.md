@@ -1,30 +1,29 @@
 # XView Code Samples
-This project provides code samples to illustrate the usage of XView.
+This project contains code samples to demonstrate how to use XView in SDL Tridion TOM.NET templates developments.
 
 XView project can be found here: [http://xview.codeplex.com](http://xview.codeplex.com).
 
 # XView Basic Concept
-Before diving into XView coding it's recommended to get to know the basic concept of XView.
+Before diving into the code it's recommended to get to know the basic concept of XView.
 
 ## Decoupled And Clean
-XView comes with a tiny XView.dll (less than 40Kb) and has a very small and clean footprint in Tridion, thanks to its logical and practical decoupled design.
+XView is a Model-View-Controller (MVC) implementation tailored for SDL Tridion TOM.NET templates development. The footprint of XView in Tridion is very small and clean thanks to its practical decoupled design.
 
-Here are some of the characteristics of a TOM.NET templates project using XView:
+XView comes with a tiny XView.dll (less than 40KB).
+
+Here are some of the characteristics of a SDL Tridion TOM.NET templates project using XView:
 
 - A C# class library that has a reference to the XView.dll (beside some Tridion dlls).
 - That C# class library produces a DLL and a Template Building Block (TBB).
 - That TBB is an XView Controller and it's used in all Compound Templates in Tridion.
 - Each Compound Template has one single TBB: the XView Controller.
 - The XView Controller produces one package variable: Output.
-- Some happy faces.
-
-As many can agree that developing .NET class libraries can be one of the most satisfying coding experiences, it is fair to say that it's a joy to code TOM.NET templates class libraries using XView. More so, if you've experienced otherwise (i.e. without XView).
 
 The picture below depicts the XView's decoupled architecture.
 ![XView Architecture](xview.png)
 
 ## View 
-Tridion templating essentially involves developing Page Templates and Component Templates to respectively render Pages and Components,.
+SDL TOM.NET templates development essentially involves developing Page Templates and Component Templates to respectively render Pages and Components,.
 
 In XView **View** classes are mapped to **Page Templates** and **Component Templates**. For each Template in Tridion there is a View class in an XView templates class library. It is possible to map two or more Templates to a single View class.
 
