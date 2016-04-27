@@ -22,17 +22,17 @@ Here are some of the characteristics of a SDL Tridion TOM.NET templates project 
 - Each Compound Template has one single TBB: the Controller derived class.
 - The Controller derived class produces one package variable: Output.
 
-The XView Controller acts as a single point of contact to isolate Tridion from the XView subsystem in which all template components and logic reside. From here you have access to the TOM.NET API, the .NET BCL and all available third-party .NET libraries. 
+In an XView templates implementation the Controller acts as a single point of contact to isolate Tridion from the XView subsystem in which all template components and logic reside. From here you have access to the TOM.NET API, the .NET BCL and all available third-party .NET libraries. 
 
-The practical and decoupled design of XView makes TOM.NET development very powerful an clean. It simplifies templates development significantly. The footprint in Tridion can't be smaller; one TBB and one Output package variable. Maintenance becomes a breeze.
+The decoupled design of XView is practical and effective. It makes TOM.NET templates development very powerful, clean and fast. It also simplifies TOM.NET templates development drastically. The footprint in Tridion can't be smaller; one TBB and one package variable. Maintenance has never been easier.
 
 The diagram below depicts XView's decoupled design.
 ![XView Architecture](xview.png)
 
 ## View 
-SDL TOM.NET templates development essentially involves developing Page Templates and Component Templates to respectively render Pages and Components,.
+SDL Tridion TOM.NET templates development essentially involves developing Page Templates and Component Templates to respectively render Pages and Components,.
 
-In XView a **View** class contains logic to render output for a Pages or Component. View classes are mapped to **Page Templates** and **Component Templates**. For each Template in Tridion there is a View class in an XView templates class library. It is possible to map two or more Templates to a single View class.
+In XView a **View** class contains logic to render output for a Page or a Component. View classes are mapped to **Page Templates** and **Component Templates**. For each Template in Tridion there is a View class in an XView templates class library. It is possible to map two or more Templates to a single View class.
 
 See section ViewMapper bellow for mapping details.
 
