@@ -24,7 +24,9 @@ Here are some of the characteristics of a SDL Tridion TOM.NET templates project 
 
 In an XView templates implementation the Controller acts as a single point of contact to isolate Tridion from the XView subsystem in which all template components and logic reside. From here you have access to the TOM.NET API, the .NET BCL and all available third-party .NET libraries. 
 
-The decoupled design of XView is practical and effective. It makes TOM.NET templates development very powerful, clean and fast. It also simplifies TOM.NET templates development drastically. The footprint in Tridion can't be smaller; one TBB and one package variable. Maintenance has never been easier.
+The decoupled design of XView is practical and effective. It simplifies TOM.NET templates development drastically and it also makes TOM.NET templates development very clean, fast and powerful. 
+
+The footprint in Tridion can't be smaller; one TBB and one package variable. The end results will be much easier to maintain. The difference compared to conventional way of Compound Templates development is like day and night.
 
 The diagram below depicts XView's decoupled design.
 ![XView Architecture](xview.png)
