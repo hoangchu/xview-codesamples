@@ -80,18 +80,18 @@ The default mapping logic is based on Template and View naming convention.
 
 Examples:
 
-- A Component Template named `Article` is mapped with a View named `ArticleView`. This View's full name is `[Project root namespace].Views.ComponentViews.ArticleView`.
+- A Component Template named `Article` is mapped to a View named `ArticleView`. This View's full name is `[Project root namespace].Views.ComponentViews.ArticleView`.
 
-- A Page Template named `Xml` is mapped with a View named `XmlView`. This View's full name is `[Project root namespace].Views.PageViews.XmlView`.
+- A Page Template named `Xml` is mapped to a View named `XmlView`. This View's full name is `[Project root namespace].Views.PageViews.XmlView`.
 
-It is possible to provide custom mapping logic by creating a ViewMapper derived class and override a specific method, or by creating a new class that implements the IViewMapper interface.
+It is possible to add custom mapping logic by extending the default ViewMapper class, or by creating a new class that implements the IViewMapper interface.
 
 [Example ViewMapper derived class](https://github.com/hoangchu/xview-codesamples/blob/master/Source/Templating/Controllers/IntranetViewMapper.cs).
 
 ## Output Filters
-Output decoration and output validation are among the things you often see in a Tridion templating implementation. 
+Output decoration and output validation are among the things you often see in a Tridion templating implementation. For example, the pipe-and-filter architecture that you see in Compound Templates is an output decoration system.
 
-XView provides a convenient and centralized way to decorate output with **OutputDecorationFilter**s and validate output with **OutputValidationFilter**s.
+XView provides a convenient and centralized way to decorate output with **OutputDecorationFilter**s and to validate output with **OutputValidationFilter**s.
 
 You can create filter classes derived from `OutputDecorationFilter` or `OutputValidationFilter` and specify which `ViewOutputType` to apply the filtering to. (Eg. Html, Xml, Css, Json, etc.). A filter class can handle one or more `ViewOutputType`. The filter will be applied to output of `View`'s that have a matching `ViewOutputType`. (In a `View` class you can explicitly specify a `ViewOutputType` through the `View.OutputType` property. By default `ViewOutputType.Html` is returned for `View.OutputType` when not explicitly specified).
 
